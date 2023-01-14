@@ -1,5 +1,5 @@
-local bind = vim.keymap.set
 local opts = { silent = true, noremap = true }
+local bind = vim.keymap.set
 
 bind("n", "<leader>h", ":nohlsearch<CR>", opts)
 
