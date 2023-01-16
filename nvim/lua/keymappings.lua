@@ -83,7 +83,6 @@ bind(
 -- bind('n', '<leader>e', vim.diagnostic.open_float, opts)
 bind('n', '<leader>q', "<cmd>lua require'qf'.toggle('l', true)<cr>", opts)
 bind('n', "<leader>b", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
-
 bind("n", "<leader>sf", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
 bind("n", "<leader>sb", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", opts)
 bind("n", "<leader>sg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
