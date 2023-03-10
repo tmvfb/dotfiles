@@ -1,6 +1,6 @@
 -- https://github.com/wbthomason/packer.nvim
 -- https://github.com/nvim-lua/kickstart.nvim
--- https://github.com/ecosse3/nvim/blob/master/lua/plugins.lua
+-- https://github.com/ecosse3/nvim/blob/master/lua/config/plugins.lua
 
 return require('packer').startup({
 
@@ -8,16 +8,14 @@ return require('packer').startup({
     -- https://github.com/gelguy/wilder.nvim
     -- https://github.com/sindrets/diffview.nvim
     -- https://github.com/kylechui/nvim-surround
-
     use { 'wbthomason/packer.nvim' }
-
     -- speeding up
     use { 'lewis6991/impatient.nvim' }
     use { 'nathom/filetype.nvim' }
 
     use { 'tpope/vim-sensible' }
 
-    use { 'nvim-lua/plenary.nvim' }
+    use { "nvim-lua/plenary.nvim" }
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'svban/YankAssassin.vim' }
 
@@ -44,6 +42,8 @@ return require('packer').startup({
     --     require 'hop'.setup()
     --   end
     -- }
+
+    use { 'mattn/emmet-vim' }
 
     use {
       'goolord/alpha-nvim',
@@ -110,13 +110,11 @@ return require('packer').startup({
     }
 
     use {
-      'kyazdani42/nvim-tree.lua',
+      'nvim-tree/nvim-tree.lua',
       requires = {
-        'kyazdani42/nvim-web-devicons'
+        'nvim-tree/nvim-web-devicons', -- optional, for file icons
       },
-      config = function()
-        require('nvim-tree').setup {}
-      end
+      tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
 
     use {
@@ -202,17 +200,17 @@ return require('packer').startup({
       end
     }
 
-    -- use {
-    --   "folke/trouble.nvim",
-    --   requires = "kyazdani42/nvim-web-devicons",
-    --   config = function()
-    --     require("trouble").setup {
-    --       -- your configuration comes here
-    --       -- or leave it empty to use the default settings
-    --       -- refer to the configuration section below
-    --     }
-    --   end
-    -- }
+    use {
+      "folke/trouble.nvim",
+      requires = "nvim-tree/nvim-web-devicons",
+      config = function()
+	require("trouble").setup {
+	  -- your configuration comes here
+	  -- or leave it empty to use the default settings
+	  -- refer to the configuration section below
+	}
+      end
+    }
 
     use {
       'lewis6991/gitsigns.nvim',
@@ -236,6 +234,7 @@ return require('packer').startup({
     require('plugins.treesitter').run(use)
     require('plugins.lsp').run(use)
     require('plugins.specific').run(use)
+    require("nvim-tree").setup()
 
     use {
       'nvim-telescope/telescope.nvim',

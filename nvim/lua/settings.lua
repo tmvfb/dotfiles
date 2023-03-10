@@ -1,7 +1,7 @@
 local options = {
   -- spelllang  = 'en_us,ru',
   langmap    = 'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz',
-  -- clipboard      = "unnamed,unnamedplus",   --- Copy-paste between vim and everything else
+  clipboard      = "unnamed,unnamedplus",   --- Copy-paste between vim and everything else
   -- cmdheight      = 1,                       --- Give more space for displaying messages
   -- completeopt    = "menu,menuone,noselect", --- Better autocompletion
   -- cursorline     = true,                    --- Highlight of current line
@@ -66,3 +66,6 @@ for k, v in pairs(globals) do
   vim.g[k] = v
 end
 
+vim.opt.fileformats = { 'dos', 'unix' }
+vim.opt.fixeol = false
+vim.opt.eol = false

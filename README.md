@@ -67,6 +67,7 @@ Run `:PackerSync` after each pulling (git pull)
 
 ### Code editing and code navigation
 
+* `<leader> xx` - toggle Trouble (errors description)
 * `gcc` – toggle commenting
 * `gf` – open a file corresponding to a word under the cursor
 * `gd` – go to definition

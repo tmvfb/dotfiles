@@ -95,3 +95,5 @@ bind("n", "<leader>sh", "<cmd>lua require('telescope.builtin').help_tags()<cr>",
 bind('n', '<leader><leader>', ':NvimTreeToggle<CR>')
 
 bind('n', '<C-n>', ':NvimTreeFindFile<CR>')
+
+bind('n', '<leader>xx', '<cmd>TroubleToggle<cr>')
