@@ -11,7 +11,7 @@ return require('packer').startup({
     use { 'wbthomason/packer.nvim' }
     -- speeding up
     use { 'lewis6991/impatient.nvim' }
-    use { 'nathom/filetype.nvim' }
+    -- use { 'nathom/filetype.nvim' }
 
     use { 'tpope/vim-sensible' }
 
