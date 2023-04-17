@@ -11,11 +11,8 @@
 
 ## Setup
 
-```sh
-sh -c "$(wget -O- https://raw.githubusercontent.com/mokevnin/dotfiles/main/install.sh)"
-
-# or
-git clone git@github.com:mokevnin/dotfiles.git
+```
+clone repository
 make install # same when updating
 
 # configure nvim
@@ -31,7 +28,6 @@ Run `:PackerSync` after each pulling (git pull)
 
 ### Main
 
-* Switch `<ctrl>` and `<caps lock>`
 * Use `<ctrl> + [` instead of `<Esc>`
 * `<leader>` – Space
 
@@ -67,7 +63,9 @@ Run `:PackerSync` after each pulling (git pull)
 
 ### Code editing and code navigation
 
-* `<leader> xx` - toggle Trouble (errors description)
+* `<leader>:` - toggle Trouble (errors description)
+* `<leader>p` - :set paste
+* `<leader>pp` - :set nopaste
 * `gcc` – toggle commenting
 * `gf` – open a file corresponding to a word under the cursor
 * `gd` – go to definition

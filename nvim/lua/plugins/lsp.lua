@@ -124,7 +124,7 @@ function M.run(use)
           -- null_ls.builtins.diagnostics.selene,
           null_ls.builtins.diagnostics.stylelint,
           null_ls.builtins.formatting.stylelint,
-          null_ls.builtins.diagnostics.tidy,
+          -- null_ls.builtins.diagnostics.tidy,
           null_ls.builtins.diagnostics.yamllint,
           null_ls.builtins.diagnostics.zsh,
           null_ls.builtins.formatting.autopep8,
