@@ -30,6 +30,7 @@ function M.run(use)
     'jsonls',
     -- 'ruby_ls',
     'solargraph',
+    'tailwindcss'
   }
 
   use {
@@ -110,8 +111,8 @@ function M.run(use)
           -- null_ls.builtins.diagnostics.actionlint,
           -- null_ls.builtins.diagnostics.checkmake,
           null_ls.builtins.diagnostics.codespell,
-          null_ls.builtins.diagnostics.curlylint,
-          -- null_ls.builtins.diagnostics.djlint,
+          -- null_ls.builtins.diagnostics.curlylint,
+          null_ls.builtins.diagnostics.djlint,
           -- null_ls.builtins.diagnostics.dotenv_linter,
           -- null_ls.builtins.diagnostics.editorconfig_checker,
           null_ls.builtins.diagnostics.erb_lint,
@@ -130,11 +131,11 @@ function M.run(use)
           null_ls.builtins.formatting.autopep8,
           null_ls.builtins.formatting.beautysh,
           null_ls.builtins.formatting.codespell,
-          -- null_ls.builtins.formatting.djlint,
+          null_ls.builtins.formatting.djlint,
           null_ls.builtins.formatting.isort,
           -- null_ls.builtins.formatting.jq,
           -- null_ls.builtins.formatting.lua_format,
-          null_ls.builtins.formatting.prettier,
+          -- null_ls.builtins.formatting.prettier,
           -- null_ls.builtins.formatting.nginx_beautifier,
           -- null_ls.builtins.formatting.pg_format,
           null_ls.builtins.formatting.phpcbf,
