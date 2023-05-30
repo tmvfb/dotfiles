@@ -3,5 +3,5 @@ if not present then
   return
 end
 
-vim.g.material_style = "palenight"
+vim.g.material_style = "lighter"
 vim.cmd 'colorscheme material'

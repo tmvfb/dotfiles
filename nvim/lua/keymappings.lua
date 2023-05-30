@@ -100,3 +100,48 @@ bind('n', '<leader>;', '<cmd>TroubleToggle<CR>')
 
 bind('n', '<leader>p', ':set paste<CR>')
 bind('n', '<leader>pp', ':set nopaste<CR>')
+
+bind('n', '<leader>qq', '<cmd>call Black()<cr>')
+bind('v', '<leader>qq', '<cmd>call Black()<cr>')
+
+
+bind('n', 'tt', '<cmd>lua surround_translation()<CR>')
+bind('n', 'tu', '<cmd>lua surround_url()<CR>')
+bind('n', 't{', '<cmd>lua surround_brackets()<CR>')
+bind('n', 'tf', '<cmd>lua surround_func()<CR>')
+
+
+
+function surround(string_format)
+  local _, csrow, cscol, _ = unpack(vim.fn.getpos("'<"))
+  local _, cerow, cecol, _ = unpack(vim.fn.getpos("'>"))
+
+  local line_text = vim.fn.getline(csrow)
+  local block_text_line = line_text:sub(cscol, cecol)
+
+  local final_text = string_format:gsub("BLOCK_TEXT_LINE", block_text_line)
+  -- local final_text = "{% translate '" .. block_text_line .. "' %}"
+  vim.api.nvim_command([[normal! gv"_d]])
+  vim.api.nvim_command('normal! i' .. final_text)  -- Insert the replacement text
+end
+
+
+function surround_translation()
+  surround("{% translate 'BLOCK_TEXT_LINE' %}")
+end
+
+
+function surround_url()
+  surround("{% url 'BLOCK_TEXT_LINE' %}")
+end
+
+
+function surround_brackets()
+  surround("{{ BLOCK_TEXT_LINE }}")
+end
+
+function surround_func()
+  surround("{% BLOCK_TEXT_LINE %}")
+end
+
+
