@@ -24,8 +24,8 @@ bind("i", "<C-г>", "<C-G>u<C-U>", opts)
 bind("i", "<C-ц>", "<C-G>u<C-W>", opts)
 
 -- Move selected line / block of text in visual mode
--- keymap("x", "K", ":move '<-2<CR>gv-gv", silent)
--- keymap("x", "J", ":move '>+1<CR>gv-gv", silent)
+bind("v", "K", ":move '<-2<CR>gv-gv", opts)
+bind("v", "J", ":move '>+1<CR>gv-gv", opts)
 
 bind('v', '"y', '"+y', opts)
 bind('n', '"y', '"+y', opts)
@@ -48,7 +48,7 @@ bind("n", "gp", ":bp<CR>", opts)
 -- bind("v", "X", '"_X', opts)
 
 -- Don't yank on visual paste
--- bind("v", "p", '"_dP', opts)
+bind("v", "p", '"_dP', opts)
 
 -- Quickfix
 -- keymap("n", "<leader>,", ":cp<CR>", silent)
@@ -56,7 +56,7 @@ bind("n", "gp", ":bp<CR>", opts)
 
 -- Toggle quicklist
 -- https://github.com/ecosse3/nvim/blob/master/lua/utils/init.lua
--- keymap("n", "<leader>q", "<cmd>lua require('utils').toggle_quicklist()<CR>", silent)
+-- bind("n", "<leader>q", "<cmd>lua require('utils').toggle_quicklist()<CR>")
 
 -- Easyalign
 -- keymap("n", "ga", "<Plug>(EasyAlign)", silent)
@@ -73,15 +73,10 @@ bind("v", "<leader>ac", "<cmd>lua require('comment-box').lbox()<CR>", opts)
 -- LSP
 -- partially implemented in zero-lsp
 
-bind(
-  "v",
-  "<leader>rr",
-  "<Esc><rmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
-  opts
-)
+bind("v",  "<leader>rr",  "<Esc><rmd>lua require('telescope').extensions.refactoring.refactors()<CR>", opts)
 
 -- bind('n', '<leader>e', vim.diagnostic.open_float, opts)
-bind('n', '<leader>q', "<cmd>lua require'qf'.toggle('l', true)<cr>", opts)
+bind('n', '<leader>q', "<cmd>lua require('qf').toggle('l', true)<cr>", opts)
 bind('n', "<leader>b", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
 bind("n", "<leader>sf", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
 bind("n", "<leader>sb", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", opts)
@@ -96,52 +91,16 @@ bind('n', '<leader><leader>', ':NvimTreeToggle<CR>')
 
 bind('n', '<C-n>', ':NvimTreeFindFile<CR>')
 
-bind('n', '<leader>;', '<cmd>TroubleToggle<CR>')
+bind('n', '<leader>;', '<cmd>TroubleToggle<CR>', opts)
 
-bind('n', '<leader>p', ':set paste<CR>')
-bind('n', '<leader>pp', ':set nopaste<CR>')
+bind('n', '<leader>p', ':set paste<CR>', opts)
+bind('n', '<leader>pp', ':set nopaste<CR>', opts)
 
-bind('n', '<leader>qq', '<cmd>call Black()<cr>')
-bind('v', '<leader>qq', '<cmd>call Black()<cr>')
+-- Django templates syntax (see functions.lua)
+bind('n', '<leader>tt', "<cmd>lua require('functions').Surround_translation()<CR>", opts)
+bind('n', '<leader>tu', "<cmd>lua require('functions').Surround_url()<CR>", opts)
+bind('n', '<leader>t{', "<cmd>lua require('functions').Surround_brackets()<CR>", opts)
+bind('n', '<leader>tf', "<cmd>lua require('functions').Surround_func()<CR>", opts)
 
-
-bind('n', 'tt', '<cmd>lua surround_translation()<CR>')
-bind('n', 'tu', '<cmd>lua surround_url()<CR>')
-bind('n', 't{', '<cmd>lua surround_brackets()<CR>')
-bind('n', 'tf', '<cmd>lua surround_func()<CR>')
-
-
-
-function surround(string_format)
-  local _, csrow, cscol, _ = unpack(vim.fn.getpos("'<"))
-  local _, cerow, cecol, _ = unpack(vim.fn.getpos("'>"))
-
-  local line_text = vim.fn.getline(csrow)
-  local block_text_line = line_text:sub(cscol, cecol)
-
-  local final_text = string_format:gsub("BLOCK_TEXT_LINE", block_text_line)
-  -- local final_text = "{% translate '" .. block_text_line .. "' %}"
-  vim.api.nvim_command([[normal! gv"_d]])
-  vim.api.nvim_command('normal! i' .. final_text)  -- Insert the replacement text
-end
-
-
-function surround_translation()
-  surround("{% translate 'BLOCK_TEXT_LINE' %}")
-end
-
-
-function surround_url()
-  surround("{% url 'BLOCK_TEXT_LINE' %}")
-end
-
-
-function surround_brackets()
-  surround("{{ BLOCK_TEXT_LINE }}")
-end
-
-function surround_func()
-  surround("{% BLOCK_TEXT_LINE %}")
-end
-
-
+-- Select current word and run command to replace it
+bind("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)

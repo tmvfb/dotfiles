@@ -16,7 +16,7 @@ return require('packer').startup({
     use { 'tpope/vim-sensible' }
 
     use { "nvim-lua/plenary.nvim" }
-    use { 'kyazdani42/nvim-web-devicons' }
+    use { 'nvim-tree/nvim-web-devicons' }
     use { 'svban/YankAssassin.vim' }
 
     -- TODO: add
@@ -57,8 +57,8 @@ return require('packer').startup({
       config = function()
         require("bufferline").setup {}
       end,
-      tag = "v2.*",
-      requires = 'kyazdani42/nvim-web-devicons',
+      tag = "v4.*",
+      requires = 'nvim-tree/nvim-web-devicons',
     }
 
     use { 'tpope/vim-fugitive' }

@@ -22,3 +22,43 @@ R = function(name)
   RELOAD(name)
   return require(name)
 end
+
+function Surround(string_format)
+  local _, csrow, cscol, _ = unpack(vim.fn.getpos("'<"))
+  local _, cerow, cecol, _ = unpack(vim.fn.getpos("'>"))
+
+  local line_text = vim.fn.getline(csrow)
+  local block_text_line = line_text:sub(cscol, cecol)
+
+  local final_text = string_format:gsub("BLOCK_TEXT_LINE", block_text_line)
+  -- local final_text = "{% translate '" .. block_text_line .. "' %}"
+  vim.api.nvim_command([[normal! gv"_d]])
+  vim.api.nvim_command('normal! i' .. final_text)  -- Insert the replacement text
+end
+
+
+function Surround_translation()
+  Surround("{% translate 'BLOCK_TEXT_LINE' %}")
+end
+
+
+function Surround_url()
+  Surround("{% url 'BLOCK_TEXT_LINE' %}")
+end
+
+
+function Surround_brackets()
+  Surround("{{ BLOCK_TEXT_LINE }}")
+end
+
+function Surround_func()
+  Surround("{% BLOCK_TEXT_LINE %}")
+end
+
+return {
+  Surround = Surround,
+  Surround_translation = Surround_translation,
+  Surround_url = Surround_url,
+  Surround_brackets = Surround_brackets,
+  Surround_func = Surround_func
+}
