@@ -45,6 +45,11 @@ Run `:PackerSync` after each pulling (git pull)
 * `<ctrl> n` – next item
 * `<ctrl> p` – previous item
 
+#### Visual mode
+
+* `K` - move selection up
+* `J` - move selection down
+
 ### File Tree
 
 * `<leader><leader>` – toggle filetree
@@ -59,7 +64,7 @@ Run `:PackerSync` after each pulling (git pull)
 * `<leader> so` – symbols
 * `<leader> sr` – references
 * `<leader> b` – show buffer list
-* `<leader>S` – search & replace
+* `<leader> s` – search & replace
 
 ### Code editing and code navigation
 
