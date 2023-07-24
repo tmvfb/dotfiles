@@ -3,6 +3,7 @@ local M = {}
 function M.run(use)
   servers = {
     'marksman',
+    'ltex',
     'tsserver',
     -- 'phpactor',
     'ansiblels',
@@ -40,6 +41,7 @@ function M.run(use)
       'neovim/nvim-lspconfig',
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      'b0o/schemastore.nvim',
 
       -- Autocompletion
       'hrsh7th/nvim-cmp',
@@ -66,9 +68,8 @@ function M.run(use)
       local lsp = require('lsp-zero')
       lsp.preset('recommended')
 
-      lsp.ensure_installed(servers)
-
       lsp.on_attach(function(client, bufnr)
+        lsp.default_keymaps({ buffer = bufnr })
         local opts = { buffer = bufnr, remap = false }
         local bind = vim.keymap.set
 
@@ -76,8 +77,36 @@ function M.run(use)
         -- bind('n', "gr", "<cmd>TroubleToggle quickfix<cr>", opts)
         bind('n', '<space>rn', vim.lsp.buf.rename, opts)
         bind('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-        -- bind('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<cr>', noremap)
       end)
+
+      lsp.ensure_installed(servers)
+
+      local lsp_config = require('lspconfig')
+
+      lsp_config.jsonls.setup {
+        settings = {
+          json = {
+            schemas = require('schemastore').json.schemas(),
+            validate = { enable = true },
+          },
+        },
+      }
+
+      lsp_config.ltex.setup {
+        settings = {
+          ltex = {
+            language = "ru-RU"
+          }
+        },
+      }
+
+      lsp_config.yamlls.setup {
+        settings = {
+          yaml = {
+            schemas = require('schemastore').yaml.schemas(),
+          },
+        },
+      }
 
       local solargraph_opts = {
         cmd = { 'bin/solargraph' }
@@ -102,8 +131,7 @@ function M.run(use)
         on_attach = null_opts.on_attach,
         sources = {
           slim_diagnostics,
-          null_ls.builtins.diagnostics.rubocop,
-          null_ls.builtins.formatting.rubocop,
+          -- null_ls.builtins.diagnostics.rubocop,
           null_ls.builtins.diagnostics.haml_lint,
           null_ls.builtins.code_actions.gitsigns,
           null_ls.builtins.code_actions.refactoring,
@@ -151,21 +179,10 @@ function M.run(use)
       })
 
       local cmp = require('cmp')
-      -- local cmp_select = { behavior = cmp.SelectBehavior.Select }
       local sources = lsp.defaults.cmp_sources()
       table.insert(sources, { name = 'nvim_lsp_signature_help' })
 
-      -- looks terrible. Waiting for an improvement
-      -- local lspkind = require('lspkind')
-
       local cmp_config = lsp.defaults.cmp_config({
-        -- formatting = {
-        --   format = lspkind.cmp_format({
-        --     mode = 'symbol',
-        --     maxwidth = 50,
-        --     ellipsis_char = '...',
-        --   }),
-        -- },
         preselect = 'none',
         completion = {
           completeopt = 'menu,menuone,noinsert,noselect'
