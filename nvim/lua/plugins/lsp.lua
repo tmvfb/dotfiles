@@ -4,7 +4,7 @@ function M.run(use)
   servers = {
     'marksman',
     'tsserver',
-    'phpactor',
+    -- 'phpactor',
     'ansiblels',
     'bashls',
     'dockerls',
@@ -13,8 +13,8 @@ function M.run(use)
     'grammarly',
     'jdtls',
     'omnisharp',
-    'psalm',
-    'pyright',
+    -- 'psalm',
+    -- 'pyright',
     -- 'sorbet',
     'sqlls',
     'lua_ls',
@@ -29,7 +29,7 @@ function M.run(use)
     'eslint',
     'jsonls',
     -- 'ruby_ls',
-    'solargraph',
+    -- 'solargraph',
     'tailwindcss'
   }
 

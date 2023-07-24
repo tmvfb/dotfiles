@@ -1,6 +1,7 @@
 ## Requirements
 
 * Linux or Mac
+* [asdf](https://asdf-vm.com/guide/getting-started.html)
 * git (for automatic installation)
 * make (for automatic installation)
 * [Nvim](https://github.com/neovim/neovim/wiki/Installing-Neovim) (version >= 0.4.4)
@@ -12,17 +13,23 @@
 ## Setup
 
 ```
-clone repository
+# clone repository
 make install # same when updating
 
 # configure nvim
 make nvim-configure
 
-# install all additional packages for languages (See Makefile for install packages for some language)
+# install all additional packages for languages (See Makefile to install packages for some language)
 make deps-install
 ```
 
-## VIM
+## Neovim
+**Setup latest Linux neovim release:**
+```sh
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+sudo ln -s $HOME/nvim.appimage $HOME/.local/bin/nvim
+```
 
 Run `:PackerSync` after each pulling (git pull)
 
@@ -79,3 +86,12 @@ Run `:PackerSync` after each pulling (git pull)
 * `]g` and `[g` – go through diagnostics
 * `]<leader>` and `[<leader>` – add empty line above and under cursor
 * `<leader>ca` – show code actions
+
+
+## Misc
+Add to .zshrc/.bashrc:
+  
+```sh
+export PATH="$HOME/.local/bin:$PATH"
+export FZF_BASE="/usr/bin/fzf"
+```
