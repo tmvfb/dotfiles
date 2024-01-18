@@ -1,28 +1,25 @@
-local M = {}
-
-function M.run(use)
-  use({
+return {
+  {
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
-  })
+  };
 
-  use { 'slim-template/vim-slim' }
+  { 'slim-template/vim-slim' };
 
-  use {
+  {
     "cuducos/yaml.nvim",
     ft = {"yaml"}, -- optional
     requires = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-telescope/telescope.nvim" -- optional
     },
-  }
+  };
 
   --     use 'isobit/vim-caddyfile'
-  use 'tpope/vim-rails'
+  'tpope/vim-rails';
   --     use 'slim-template/vim-slim'
-  use 'dhruvasagar/vim-table-mode'
-  use { 'mfussenegger/nvim-jdtls' }
+  'dhruvasagar/vim-table-mode';
+  'mfussenegger/nvim-jdtls';
 
-end
+}
 
-return M

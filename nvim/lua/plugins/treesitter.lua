@@ -1,18 +1,18 @@
-local M = {}
-
-function M.run(use)
+return {
   -- https://github.com/RRethy/nvim-treesitter-textsubjects
-  use {
-    'ThePrimeagen/refactoring.nvim',
+  {
+    "ThePrimeagen/refactoring.nvim",
     requires = {
-      { 'nvim-lua/plenary.nvim' },
-      { 'nvim-treesitter/nvim-treesitter' }
-    }
-  }
-
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-treesitter/nvim-treesitter"}
+    },
+    config = function()
+      require("refactoring").setup()
+    end,
+  };
 
   -- function/class annotation generator
-  use {
+  {
     'danymat/neogen',
     config = function()
       require('neogen').setup()
@@ -20,10 +20,10 @@ function M.run(use)
     requires = {
       'nvim-treesitter/nvim-treesitter'
     },
-  }
+  };
 
 
-  use {
+  {
     'windwp/nvim-autopairs',
     requires = {
       'hrsh7th/nvim-cmp',
@@ -41,9 +41,9 @@ function M.run(use)
         cmp_autopairs.on_confirm_done()
       )
     end
-  }
+  };
 
-  use {
+  {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'tree-sitter/tree-sitter-embedded-template',
     'RRethy/nvim-treesitter-endwise',
@@ -61,9 +61,9 @@ function M.run(use)
     requires = {
       'nvim-treesitter/nvim-treesitter',
     }
-  }
+  };
 
-  use {
+  {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = function()
@@ -151,7 +151,5 @@ function M.run(use)
         },
       }
     end
-  }
-end
-
-return M
+  };
+}

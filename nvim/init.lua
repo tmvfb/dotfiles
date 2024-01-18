@@ -8,3 +8,6 @@ require('colorscheme')
 require('autocmds')
 require('plugins.init')
 require('keymappings')
+
+require("nvim-tree").setup()
+

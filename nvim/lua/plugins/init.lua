@@ -2,122 +2,138 @@
 -- https://github.com/nvim-lua/kickstart.nvim
 -- https://github.com/ecosse3/nvim/blob/master/lua/config/plugins.lua
 
-return require('packer').startup({
+local function bootstrap_pckr()
+  local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
 
-  function(use)
+  if not vim.loop.fs_stat(pckr_path) then
+    vim.fn.system({
+      'git',
+      'clone',
+      "--filter=blob:none",
+      'https://github.com/lewis6991/pckr.nvim',
+      pckr_path
+    })
+  end
+
+  vim.opt.rtp:prepend(pckr_path)
+end
+
+bootstrap_pckr()
+
+local cmd = require('pckr.loader.cmd')
+local keys = require('pckr.loader.keys')
+
+require('pckr').add {
+
     -- https://github.com/gelguy/wilder.nvim
     -- https://github.com/sindrets/diffview.nvim
     -- https://github.com/kylechui/nvim-surround
-    use { 'wbthomason/packer.nvim' }
+    -- 'wbthomason/packer.nvim';
     -- speeding up
-    use { 'lewis6991/impatient.nvim' }
-    -- use { 'nathom/filetype.nvim' }
+    'lewis6991/impatient.nvim';
+    -- 'nathom/filetype.nvim';
 
-    use { 'tpope/vim-sensible' }
+    'tpope/vim-sensible';
 
-    use { "nvim-lua/plenary.nvim" }
-    use { 'nvim-tree/nvim-web-devicons' }
-    use { 'svban/YankAssassin.vim' }
+    'nvim-lua/plenary.nvim';
+    'nvim-tree/nvim-web-devicons';
+    'svban/YankAssassin.vim';
+
+    {
+      'williamboman/mason.nvim',
+      config = function()
+        require("mason").setup()
+      end
+    };
 
     -- TODO: add
     -- https://github.com/gbprod/yanky.nvim
 
-    -- use {
+    -- {
     --   'rcarriga/nvim-notify',
     --   config = function()
     --     require("notify").setup({})
     --   end
-    -- }
+    -- };
 
-    -- use {
+    -- {
     --   'ggandor/leap.nvim',
     --   config = function()
     --     local leap = require('leap')
     --     leap.add_default_mappings()
     --   end
-    -- }
-    -- use {
+    -- };
+
+    -- {
     --   'phaazon/hop.nvim',
     --   config = function()
     --     require 'hop'.setup()
     --   end
-    -- }
+    -- };
 
-    use { 'mattn/emmet-vim' }
-
-    use {
+    {
       'goolord/alpha-nvim',
       config = function()
         require 'alpha'.setup(require 'alpha.themes.startify'.config)
       end
-    }
+    };
 
-    use {
-      'akinsho/bufferline.nvim',
+    {
+      "willothy/nvim-cokeline",
+      requires = {
+        "nvim-lua/plenary.nvim",        -- Required for v0.4.0+
+        "nvim-tree/nvim-web-devicons", -- If you want devicons
+        "stevearc/resession.nvim"       -- Optional, for persistent history
+      },
       config = function()
-        require("bufferline").setup {}
-      end,
-      tag = "v4.*",
-      requires = 'nvim-tree/nvim-web-devicons',
-    }
+        require('cokeline').setup()
+      end
+    };
 
-    use { 'tpope/vim-fugitive' }
-    use { 'LudoPinelli/comment-box.nvim' }
-    use { 'AndrewRadev/splitjoin.vim' }
 
-    use {
+    'tpope/vim-fugitive';
+    'LudoPinelli/comment-box.nvim';
+    'AndrewRadev/splitjoin.vim';
+
+    {
       'ten3roberts/qf.nvim',
       config = function()
         require 'qf'.setup {}
       end
-    }
+    };
 
-    use {
+    {
       'neogitorg/neogit',
       config = function()
         local neogit = require('neogit')
         neogit.setup()
       end,
       requires = 'nvim-lua/plenary.nvim'
-    }
+    };
 
-    use {
-      'mfussenegger/nvim-dap',
-      'jayp0521/mason-nvim-dap.nvim',
-      config = function()
-        require("dapui").setup()
-      end
-    }
-    use {
-      'theHamsta/nvim-dap-virtual-text',
-      config = function()
-        require("nvim-dap-virtual-text").setup()
-      end
-    }
-    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 
-    use { 'antoinemadec/FixCursorHold.nvim' }
+    'antoinemadec/FixCursorHold.nvim';
 
-    use 'tpope/vim-repeat'
+    'tpope/vim-repeat';
 
-    use {
+    {
       'kosayoda/nvim-lightbulb',
       requires = 'antoinemadec/FixCursorHold.nvim',
       config = function()
         local lightbulb = require('nvim-lightbulb')
         lightbulb.setup({ autocmd = { enabled = true } })
       end
-    }
+    };
 
-    use {
+    {
       'nvim-tree/nvim-tree.lua',
       requires = {
         'nvim-tree/nvim-web-devicons', -- optional, for file icons
       },
       tag = 'nightly' -- optional, updated every week. (see issue #1193)
-    }
+    };
 
-    use {
+    {
       'stevearc/dressing.nvim',
       config = function()
         -- TODO: add c-[ for normal mode
@@ -147,9 +163,9 @@ return require('packer').startup({
           --   },
         })
       end
-    }
+    };
 
-    use {
+    {
       'feline-nvim/feline.nvim',
       after = "nvim-web-devicons",
       config = function()
@@ -157,50 +173,39 @@ return require('packer').startup({
           -- preset = 'noicon'
         })
       end
-    }
+    };
 
-    use {
+    {
       'nvim-zh/auto-save.nvim',
       config = function()
         local autosave = require("auto-save")
         autosave.setup()
       end
-    }
+    };
 
-    use { 'ntpeters/vim-better-whitespace' }
-    use 'tpope/vim-sleuth'
-
-    use {
-      'lukas-reineke/indent-blankline.nvim',
-      config = function()
-        require('indent_blankline').setup {
-          char = '┊',
-          show_trailing_blankline_indent = false,
-        }
-      end
-    }
+    'ntpeters/vim-better-whitespace';
+    'tpope/vim-sleuth';
+    'lukas-reineke/indent-blankline.nvim';
 
     -- alternative https://github.com/machakann/vim-sandwich
-    use { 'tpope/vim-surround' }
-    use 'windwp/nvim-spectre'
-    use 'dyng/ctrlsf.vim'
-    use { 'marko-cerovac/material.nvim' }
+    'tpope/vim-surround';
+    'windwp/nvim-spectre';
+    'dyng/ctrlsf.vim';
+    'marko-cerovac/material.nvim';
     --
-    use { 'tpope/vim-unimpaired' }
+    'tpope/vim-unimpaired';
 
-    use {
+    {
       'numToStr/Comment.nvim',
       config = function()
-        local ts_comment_integration = require('ts_context_commentstring.integrations.comment_nvim')
         require('Comment').setup({
-          pre_hook = ts_comment_integration.create_pre_hook(),
         })
       end
-    }
+    };
 
-    use {
+    {
       "folke/trouble.nvim",
-      requires = "nvim-tree/nvim-web-devicons",
+     requires = "nvim-tree/nvim-web-devicons",
       config = function()
 	require("trouble").setup {
 	  -- your configuration comes here
@@ -208,17 +213,17 @@ return require('packer').startup({
 	  -- refer to the configuration section below
 	}
       end
-    }
+    };
 
-    use {
+    {
       'lewis6991/gitsigns.nvim',
       requires = { 'nvim-lua/plenary.nvim' },
       config = function()
         require('gitsigns').setup()
       end
-    }
+    };
 
-    use {
+    {
       "folke/which-key.nvim",
       config = function()
         require("which-key").setup {
@@ -227,23 +232,22 @@ return require('packer').startup({
           -- refer to the configuration section below
         }
       end
-    }
+    };
 
-    require('plugins.treesitter').run(use)
-    require('plugins.lsp').run(use)
-    require('plugins.specific').run(use)
-    require("nvim-tree").setup()
+    unpack(require('plugins.treesitter'));
+    unpack(require('plugins.lsp'));
+    unpack(require('plugins.specific'));
 
-    use {
+    {
       'nvim-telescope/telescope.nvim',
       config = function()
-        local telescope = require('telescope')
-        -- telescope.load_extension('fzf')
-        telescope.load_extension('refactoring')
+        -- require('telescope').load_extension('fzf')
+        -- require('refactoring').setup()
+        -- require('telescope').load_extension('refactoring')
 
         -- local trouble = require("trouble.providers.telescope")
 
-        telescope.setup {
+        require('telescope').setup {
           defaults = {
             sorting_strategy = "ascending",
             mappings = {
@@ -267,15 +271,6 @@ return require('packer').startup({
         }
       end,
       requires = { 'nvim-lua/plenary.nvim' }
-    }
+    };
 
-  end,
-
-  config = {
-    enable = true,
-    -- log = { level = 'debug' },
-    display = {
-      open_fn = require('packer.util').float,
-    }
-  }
-})
+}

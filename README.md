@@ -86,6 +86,7 @@ Run `:PackerSync` after each pulling (git pull)
 * `]g` and `[g` – go through diagnostics
 * `]<leader>` and `[<leader>` – add empty line above and under cursor
 * `<leader>ca` – show code actions
+* `<leader>f` - format code
 
 
 ## Misc
