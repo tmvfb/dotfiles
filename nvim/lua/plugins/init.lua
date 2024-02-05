@@ -1,4 +1,4 @@
--- https://github.com/wbthomason/packer.nvim
+-- https://github.com/lewis6991/pckr.nvim
 -- https://github.com/nvim-lua/kickstart.nvim
 -- https://github.com/ecosse3/nvim/blob/master/lua/config/plugins.lua
 
@@ -20,70 +20,37 @@ end
 
 bootstrap_pckr()
 
-local cmd = require('pckr.loader.cmd')
-local keys = require('pckr.loader.keys')
-
 require('pckr').add {
 
     -- https://github.com/gelguy/wilder.nvim
     -- https://github.com/sindrets/diffview.nvim
-    -- https://github.com/kylechui/nvim-surround
-    -- 'wbthomason/packer.nvim';
-    -- speeding up
-    'lewis6991/impatient.nvim';
-    -- 'nathom/filetype.nvim';
 
-    'tpope/vim-sensible';
+    'tpope/vim-sensible';  -- basic config for nvim
 
-    'nvim-lua/plenary.nvim';
+    'nvim-lua/plenary.nvim';  -- basic config for nvim
     'nvim-tree/nvim-web-devicons';
-    'svban/YankAssassin.vim';
+    'svban/YankAssassin.vim';  -- leaves cursor after yank
 
     {
-      'williamboman/mason.nvim',
+      'williamboman/mason.nvim',  -- lsp config
       config = function()
         require("mason").setup()
       end
     };
 
-    -- TODO: add
-    -- https://github.com/gbprod/yanky.nvim
-
-    -- {
-    --   'rcarriga/nvim-notify',
-    --   config = function()
-    --     require("notify").setup({})
-    --   end
-    -- };
-
-    -- {
-    --   'ggandor/leap.nvim',
-    --   config = function()
-    --     local leap = require('leap')
-    --     leap.add_default_mappings()
-    --   end
-    -- };
-
-    -- {
-    --   'phaazon/hop.nvim',
-    --   config = function()
-    --     require 'hop'.setup()
-    --   end
-    -- };
-
     {
-      'goolord/alpha-nvim',
+      'goolord/alpha-nvim',  -- greet screen
       config = function()
         require 'alpha'.setup(require 'alpha.themes.startify'.config)
       end
     };
 
     {
-      "willothy/nvim-cokeline",
+      "willothy/nvim-cokeline",  -- bufferline
       requires = {
-        "nvim-lua/plenary.nvim",        -- Required for v0.4.0+
-        "nvim-tree/nvim-web-devicons", -- If you want devicons
-        "stevearc/resession.nvim"       -- Optional, for persistent history
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons",
+        "stevearc/resession.nvim"
       },
       config = function()
         require('cokeline').setup()
@@ -91,19 +58,11 @@ require('pckr').add {
     };
 
 
-    'tpope/vim-fugitive';
-    'LudoPinelli/comment-box.nvim';
-    'AndrewRadev/splitjoin.vim';
+    -- 'AndrewRadev/splitjoin.vim';
+    'tpope/vim-fugitive';  -- working with git
 
     {
-      'ten3roberts/qf.nvim',
-      config = function()
-        require 'qf'.setup {}
-      end
-    };
-
-    {
-      'neogitorg/neogit',
+      'neogitorg/neogit',  -- woking with git
       config = function()
         local neogit = require('neogit')
         neogit.setup()
@@ -111,14 +70,17 @@ require('pckr').add {
       requires = 'nvim-lua/plenary.nvim'
     };
 
+    {
+      'ten3roberts/qf.nvim',  -- quickfix
+      config = function()
+        require 'qf'.setup {}
+      end
+    };
 
-    'antoinemadec/FixCursorHold.nvim';
-
-    'tpope/vim-repeat';
+    'tpope/vim-repeat';  -- repeat whole pattern instead of only last command
 
     {
-      'kosayoda/nvim-lightbulb',
-      requires = 'antoinemadec/FixCursorHold.nvim',
+      'kosayoda/nvim-lightbulb',  -- show lightbulb if actions available (F4, covered by lsp-zero)
       config = function()
         local lightbulb = require('nvim-lightbulb')
         lightbulb.setup({ autocmd = { enabled = true } })
@@ -126,7 +88,7 @@ require('pckr').add {
     };
 
     {
-      'nvim-tree/nvim-tree.lua',
+      'nvim-tree/nvim-tree.lua',  -- tree on the left (g? for help)
       requires = {
         'nvim-tree/nvim-web-devicons', -- optional, for file icons
       },
@@ -134,7 +96,7 @@ require('pckr').add {
     };
 
     {
-      'stevearc/dressing.nvim',
+      'stevearc/dressing.nvim',  -- improve ui
       config = function()
         -- TODO: add c-[ for normal mode
         -- https://github.com/stevearc/dressing.nvim/issues/29
@@ -146,27 +108,13 @@ require('pckr').add {
                 return { enabled = false }
               end
             end,
-            -- mappings = {
-            --   n = {
-            --     ['C-['] = 'Close',
-            --   },
-            -- },
           },
-          --   select = {
-          --     telescope = {
-          --       mappings = {
-          --         n = {
-          --           ['C-['] = 'Close',
-          --         },
-          --       },
-          --     },
-          --   },
         })
       end
     };
 
     {
-      'feline-nvim/feline.nvim',
+      'freddiehaddad/feline.nvim',  -- statusline
       after = "nvim-web-devicons",
       config = function()
         require('feline').setup({
@@ -176,27 +124,32 @@ require('pckr').add {
     };
 
     {
-      'nvim-zh/auto-save.nvim',
+      'nvim-zh/auto-save.nvim',  -- some weird fork
       config = function()
         local autosave = require("auto-save")
         autosave.setup()
       end
     };
 
-    'ntpeters/vim-better-whitespace';
-    'tpope/vim-sleuth';
-    'lukas-reineke/indent-blankline.nvim';
+    'ntpeters/vim-better-whitespace';  -- trailing
+    'tpope/vim-sleuth';  -- tab width
+    {
+      'lukas-reineke/indent-blankline.nvim',  -- indentation vertical lines
+        config = function()
+          require("ibl").setup()
+        end
+    };
 
     -- alternative https://github.com/machakann/vim-sandwich
-    'tpope/vim-surround';
-    'windwp/nvim-spectre';
-    'dyng/ctrlsf.vim';
-    'marko-cerovac/material.nvim';
-    --
-    'tpope/vim-unimpaired';
+    -- https://github.com/kylechui/nvim-surround
+    'tpope/vim-surround';  -- powerful plugin to add brackets
+    'nvim-pack/nvim-spectre';  -- powerful plugin for search
+    'dyng/ctrlsf.vim';  -- editing files in place during search
+    'marko-cerovac/material.nvim';  -- colorscheme
+    'tpope/vim-unimpaired';  -- a few new mappings
 
     {
-      'numToStr/Comment.nvim',
+      'numToStr/Comment.nvim',  -- adds new bindings for commenting (gcc, gcO etc.)
       config = function()
         require('Comment').setup({
         })
@@ -204,19 +157,19 @@ require('pckr').add {
     };
 
     {
-      "folke/trouble.nvim",
-     requires = "nvim-tree/nvim-web-devicons",
+      "folke/trouble.nvim",  -- diagnostics tool
+      requires = "nvim-tree/nvim-web-devicons",
       config = function()
-	require("trouble").setup {
-	  -- your configuration comes here
-	  -- or leave it empty to use the default settings
-	  -- refer to the configuration section below
-	}
+        require("trouble").setup {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
       end
     };
 
     {
-      'lewis6991/gitsigns.nvim',
+      'lewis6991/gitsigns.nvim',  -- git integration for buffer
       requires = { 'nvim-lua/plenary.nvim' },
       config = function()
         require('gitsigns').setup()
@@ -224,7 +177,7 @@ require('pckr').add {
     };
 
     {
-      "folke/which-key.nvim",
+      "folke/which-key.nvim",  -- popups with key suggestions
       config = function()
         require("which-key").setup {
           -- your configuration comes here
@@ -234,12 +187,12 @@ require('pckr').add {
       end
     };
 
-    unpack(require('plugins.treesitter'));
-    unpack(require('plugins.lsp'));
-    unpack(require('plugins.specific'));
+    require('plugins.treesitter');
+    require('plugins.lsp');
+    require('plugins.specific');
 
     {
-      'nvim-telescope/telescope.nvim',
+      'nvim-telescope/telescope.nvim',  -- this is mega powerful
       config = function()
         -- require('telescope').load_extension('fzf')
         -- require('refactoring').setup()

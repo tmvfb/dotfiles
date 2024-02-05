@@ -17,7 +17,6 @@ return {
         'theHamsta/nvim-dap-virtual-text',
         'rcarriga/nvim-dap-ui',
 
-        -- Autocompletion
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-path',
@@ -72,7 +71,7 @@ return {
             'bashls',
             'dockerls',
             'elixirls',
-            'gopls',
+            -- 'gopls',
             'grammarly',
             'jdtls',
             'omnisharp',
