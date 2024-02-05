@@ -66,10 +66,6 @@ bind("v", "p", '"_dP', opts)
 bind("n", "<Leader>pr", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", opts)
 bind("v", "<Leader>pr", "<cmd>lua require('spectre').open_visual()<CR>")
 
--- Comment Box
-bind("n", "<leader>ac", "<cmd>lua require('comment-box').lbox()<CR>", opts)
-bind("v", "<leader>ac", "<cmd>lua require('comment-box').lbox()<CR>", opts)
-
 -- LSP
 -- partially implemented in zero-lsp
 
@@ -104,3 +100,8 @@ bind('n', '<leader>tf', "<cmd>lua require('functions').Surround_func()<CR>", opt
 
 -- Select current word and run command to replace it
 bind("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
+
+-- buffer pick
+bind("n", "<leader>pb", function()
+    require('cokeline.mappings').pick("focus")
+end, { desc = "Pick a buffer to focus" }, opts)

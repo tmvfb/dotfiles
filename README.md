@@ -71,11 +71,12 @@ Run `:PackerSync` after each pulling (git pull)
 * `<leader> so` – symbols
 * `<leader> sr` – references
 * `<leader> b` – show buffer list
+* `<leader> pb` – pick buffer (enter first letter of the name after the command)
 * `<leader> s` – search & replace
 
 ### Code editing and code navigation
 
-* `<leader>:` - toggle Trouble (errors description)
+* `<leader>;` - toggle Trouble (errors description)
 * `<leader>p` - :set paste
 * `<leader>pp` - :set nopaste
 * `gcc` – toggle commenting
