@@ -4,7 +4,7 @@
 * [asdf](https://asdf-vm.com/guide/getting-started.html)
 * git (for automatic installation)
 * make (for automatic installation)
-* [Nvim](https://github.com/neovim/neovim/wiki/Installing-Neovim) (version >= 0.4.4)
+* [Nvim](https://github.com/neovim/neovim/wiki/Installing-Neovim) (version >= 0.9)
 
 ## Recommendations
 
@@ -31,7 +31,7 @@ chmod u+x nvim.appimage
 sudo ln -s $HOME/nvim.appimage $HOME/.local/bin/nvim
 ```
 
-Run `:PackerSync` after each pulling (git pull)
+Run `:Pckr update` after each pulling (git pull)
 
 ### Main
 

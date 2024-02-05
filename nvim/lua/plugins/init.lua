@@ -187,12 +187,12 @@ require('pckr').add {
       end
     };
 
-    require('plugins.treesitter');
-    require('plugins.lsp');
-    require('plugins.specific');
+    unpack(require('plugins.treesitter'));
+    unpack(require('plugins.lsp'));
+    unpack(require('plugins.specific'));
 
     {
-      'nvim-telescope/telescope.nvim',  -- this is mega powerful
+      'nvim-telescope/telescope.nvim',
       config = function()
         -- require('telescope').load_extension('fzf')
         -- require('refactoring').setup()
