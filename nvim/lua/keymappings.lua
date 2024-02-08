@@ -93,10 +93,10 @@ bind('n', '<leader>p', ':set paste<CR>', opts)
 bind('n', '<leader>pp', ':set nopaste<CR>', opts)
 
 -- Django templates syntax (see functions.lua)
-bind('n', '<leader>tt', "<cmd>lua require('functions').Surround_translation()<CR>", opts)
-bind('n', '<leader>tu', "<cmd>lua require('functions').Surround_url()<CR>", opts)
-bind('n', '<leader>t{', "<cmd>lua require('functions').Surround_brackets()<CR>", opts)
-bind('n', '<leader>tf', "<cmd>lua require('functions').Surround_func()<CR>", opts)
+-- bind('n', '<leader>tt', "<cmd>lua require('functions').Surround_translation()<CR>", opts)
+-- bind('n', '<leader>tu', "<cmd>lua require('functions').Surround_url()<CR>", opts)
+-- bind('n', '<leader>t{', "<cmd>lua require('functions').Surround_brackets()<CR>", opts)
+-- bind('n', '<leader>tf', "<cmd>lua require('functions').Surround_func()<CR>", opts)
 
 -- Select current word and run command to replace it
 bind("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
@@ -105,3 +105,10 @@ bind("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], o
 bind("n", "<leader>pb", function()
     require('cokeline.mappings').pick("focus")
 end, { desc = "Pick a buffer to focus" }, opts)
+
+-- dap bindings
+bind("n", '<leader>t', "<cmd>lua require('dap').toggle_breakpoint() <CR>", opts)
+bind("n", '<leader>dr', "<cmd>lua require('dap').continue()<CR>", opts)
+bind("n", '<leader>dl', "<cmd>lua require('dap').run_last()<CR>", opts)
+bind("n", '<leader>du', "<cmd>lua require('dapui').toggle() <CR>", opts)
+bind("n", '<leader>dd', "<cmd>lua require('dapui').eval() <CR>", opts)

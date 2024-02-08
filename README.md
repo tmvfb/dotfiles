@@ -88,7 +88,14 @@ Run `:Pckr update` after each pulling (git pull)
 * `]<leader>` and `[<leader>` – add empty line above and under cursor
 * `<leader>ca` – show code actions
 * `<leader>f` - format code
+* `nvim-surround` is enabled, check key binds in their repo
 
+### dap commands (debugging)
+* `<leader>t` - toggle breakpoint
+* `<leader>dr` - run dap
+* `<leader>dl` - run till last breakpoint
+* `<leader>du` - toggle dap ui
+* `<leader>dd` - check the expression under cursor
 
 ## Misc
 Add to .zshrc/.bashrc:

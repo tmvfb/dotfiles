@@ -13,9 +13,44 @@ return {
 
         -- DAP support
         'mfussenegger/nvim-dap';
+        {
+          'mfussenegger/nvim-dap-python',
+          requires = {
+            'nvim-tree/nvim-tree.lua',
+            'mfussenegger/nvim-dap'
+          },
+          config = function()
+            require("dap-python").setup(
+              '~/.virtualenvs/debugpy/bin/python'
+            )
+          end
+        };
         'jay-babu/mason-nvim-dap.nvim',
         'theHamsta/nvim-dap-virtual-text',
-        'rcarriga/nvim-dap-ui',
+        {
+          'rcarriga/nvim-dap-ui',
+          requires = {
+            'mfussenegger/nvim-dap',
+            'neovim/nvim-lspconfig',
+            'williamboman/mason-lspconfig.nvim',
+          },
+          config = function()
+            require("dapui").setup()
+          end
+        };
+        {
+          'folke/neodev.nvim',
+          requires = {
+            'mfussenegger/nvim-dap',
+            'neovim/nvim-lspconfig',
+            'williamboman/mason-lspconfig.nvim'
+          },
+          config = function()
+            require("neodev").setup({
+              library = { plugins = { "nvim-dap-ui" }, types = true },
+            })
+          end
+        };
 
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-buffer',

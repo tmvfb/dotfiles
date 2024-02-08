@@ -143,7 +143,12 @@ require('pckr').add {
     -- alternative https://github.com/machakann/vim-sandwich
     -- https://github.com/kylechui/nvim-surround
     'tpope/vim-surround';  -- powerful plugin to add brackets
-    'nvim-pack/nvim-spectre';  -- powerful plugin for search
+    {
+      'nvim-pack/nvim-spectre',  -- powerful plugin for search
+      requires = {
+        "nvim-lua/plenary.nvim",
+      }
+    };
     'dyng/ctrlsf.vim';  -- editing files in place during search
     'marko-cerovac/material.nvim';  -- colorscheme
     'tpope/vim-unimpaired';  -- a few new mappings
