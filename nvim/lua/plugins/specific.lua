@@ -4,7 +4,7 @@ return {
     run = function() vim.fn["mkdp#util#install"]() end,
   };
 
-  { 'slim-template/vim-slim' };
+  'slim-template/vim-slim';
 
   {
     "cuducos/yaml.nvim",
@@ -15,9 +15,8 @@ return {
     },
   };
 
-  --     use 'isobit/vim-caddyfile'
+  -- 'isobit/vim-caddyfile';
   'tpope/vim-rails';
-  --     use 'slim-template/vim-slim'
   'dhruvasagar/vim-table-mode';
   'mfussenegger/nvim-jdtls';
 

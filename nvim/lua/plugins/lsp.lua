@@ -1,7 +1,4 @@
 return {
-  servers = {
-    };
-
     {
       'VonHeikemen/lsp-zero.nvim',
       requires = {
@@ -78,13 +75,6 @@ return {
 
         lsp.on_attach(function(client, bufnr)
           lsp.default_keymaps({ buffer = bufnr })
-          local opts = { buffer = bufnr, remap = false }
-          local bind = vim.keymap.set
-
-          bind('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({ async = true })<cr>', opts)
-          -- bind('n', "gr", "<cmd>TroubleToggle quickfix<cr>", opts)
-          bind('n', '<space>rn', vim.lsp.buf.rename, opts)
-          bind('n', '<leader>ca', vim.lsp.buf.code_action, opts)
         end)
 
         local lsp_zero = require('lsp-zero')
@@ -92,7 +82,7 @@ return {
         lsp_zero.on_attach(function(client, bufnr)
           -- see :help lsp-zero-keybindings
           -- to learn the available actions
-          lsp_zero.default_keymaps({buffer = bufnr})
+          lsp_zero.default_keymaps({ buffer = bufnr })
         end)
 
         require('mason').setup({})
@@ -211,7 +201,7 @@ return {
           completion = {
             completeopt = 'menu,menuone,noinsert,noselect'
           },
-          sources = sources,
+          sources = {},
           mapping = {
             ['<CR>'] = cmp.mapping.confirm({select = false}),
             -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),

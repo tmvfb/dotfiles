@@ -58,10 +58,6 @@ bind("v", "p", '"_dP', opts)
 -- https://github.com/ecosse3/nvim/blob/master/lua/utils/init.lua
 -- bind("n", "<leader>q", "<cmd>lua require('utils').toggle_quicklist()<CR>")
 
--- Easyalign
--- keymap("n", "ga", "<Plug>(EasyAlign)", silent)
--- keymap("x", "ga", "<Plug>(EasyAlign)", silent)
-
 -- Refactor with spectre
 bind("n", "<Leader>pr", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", opts)
 bind("v", "<Leader>pr", "<cmd>lua require('spectre').open_visual()<CR>")
@@ -69,7 +65,7 @@ bind("v", "<Leader>pr", "<cmd>lua require('spectre').open_visual()<CR>")
 -- LSP
 -- partially implemented in zero-lsp
 
-bind("v",  "<leader>rr",  "<Esc><rmd>lua require('telescope').extensions.refactoring.refactors()<CR>", opts)
+-- bind("v",  "<leader>rr",  "<Esc><rmd>lua require('telescope').extensions.refactoring.refactors()<CR>", opts)
 
 -- bind('n', '<leader>e', vim.diagnostic.open_float, opts)
 bind('n', '<leader>q', "<cmd>lua require('qf').toggle('l', true)<cr>", opts)
@@ -89,8 +85,8 @@ bind('n', '<C-n>', ':NvimTreeFindFile<CR>')
 
 bind('n', '<leader>;', '<cmd>TroubleToggle<CR>', opts)
 
-bind('n', '<leader>p', ':set paste<CR>', opts)
-bind('n', '<leader>pp', ':set nopaste<CR>', opts)
+-- bind('n', '<leader>p', ':set paste<CR>', opts)
+-- bind('n', '<leader>pp', ':set nopaste<CR>', opts)
 
 -- Django templates syntax (see functions.lua)
 -- bind('n', '<leader>tt', "<cmd>lua require('functions').Surround_translation()<CR>", opts)
@@ -102,9 +98,7 @@ bind('n', '<leader>pp', ':set nopaste<CR>', opts)
 bind("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
 
 -- buffer pick
-bind("n", "<leader>pb", function()
-    require('cokeline.mappings').pick("focus")
-end, { desc = "Pick a buffer to focus" }, opts)
+bind("n", "<leader>pb", "<cmd>require('cokeline.mappings').pick('focus')<CR>", opts)
 
 -- dap bindings
 bind("n", '<leader>t', "<cmd>lua require('dap').toggle_breakpoint() <CR>", opts)
@@ -112,3 +106,9 @@ bind("n", '<leader>dr', "<cmd>lua require('dap').continue()<CR>", opts)
 bind("n", '<leader>dl', "<cmd>lua require('dap').run_last()<CR>", opts)
 bind("n", '<leader>du', "<cmd>lua require('dapui').toggle() <CR>", opts)
 bind("n", '<leader>dd', "<cmd>lua require('dapui').eval() <CR>", opts)
+
+-- vim lsp bindings
+bind('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({ async = true })<cr>', opts)
+-- bind('n', "gr", "<cmd>TroubleToggle quickfix<cr>", opts)
+bind('n', '<space>rn', vim.lsp.buf.rename, opts)
+bind('n', '<leader>ca', vim.lsp.buf.code_action, opts)
