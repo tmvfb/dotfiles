@@ -67,7 +67,7 @@ return {
 
         -- Null LS
         'jay-babu/mason-null-ls.nvim',
-        'jose-elias-alvarez/null-ls.nvim',
+        'nvimtools/none-ls.nvim',
       },
 
       config = function()
@@ -147,7 +147,7 @@ return {
 
         lsp.setup()
 
-        local slim_diagnostics = require('plugins.null-ls.slim-lint')
+        local slim_diagnostics = require('plugins.none-ls.slim-lint')
 
         local null_ls = require('null-ls')
         local null_opts = lsp.build_options('null-ls', {})
