@@ -1,6 +1,5 @@
 local opts = { silent = true, noremap = true }
 local bind = vim.keymap.set
-
 bind("n", "<leader>h", ":nohlsearch<CR>", opts)
 
 bind('n', '<leader>vr', ':so $MYVIMRC<CR>')
@@ -110,5 +109,6 @@ bind("n", '<leader>dd', "<cmd>lua require('dapui').eval() <CR>", opts)
 -- vim lsp bindings
 bind('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({ async = true })<cr>', opts)
 -- bind('n', "gr", "<cmd>TroubleToggle quickfix<cr>", opts)
-bind('n', '<space>rn', vim.lsp.buf.rename, opts)
+bind('n', '<leader>rn', vim.lsp.buf.rename, opts)
 bind('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+bind('n', 'bd', ':bd<CR>', opts)

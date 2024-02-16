@@ -195,17 +195,22 @@ return {
         })
 
         local cmp = require('cmp')
+        -- local sources = lsp.defaults.cmp_sources()
+        -- table.insert(sources, { name = 'nvim_lsp_signature_help' })
 
         local cmp_config = lsp.defaults.cmp_config({
           preselect = 'none',
           completion = {
             completeopt = 'menu,menuone,noinsert,noselect'
           },
-          sources = {},
+          sources = {
+            { name = 'nvim_lsp' },
+            { name = 'luasnip' },
+          },
           mapping = {
             ['<CR>'] = cmp.mapping.confirm({select = false}),
+            ['<tab>'] = cmp.mapping.select_next_item(),
             -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-            -- ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
           },
         })
 
