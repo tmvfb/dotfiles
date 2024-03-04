@@ -4,6 +4,7 @@ return {
       requires = {
         -- LSP Support
         'neovim/nvim-lspconfig',
+        'astral-sh/ruff-lsp',
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
         'b0o/schemastore.nvim',
@@ -64,7 +65,12 @@ return {
 
         -- Null LS
         'jay-babu/mason-null-ls.nvim',
-        'nvimtools/none-ls.nvim',
+        {
+          "nvimtools/none-ls.nvim",
+          requires = {
+            "nvimtools/none-ls-extras.nvim",
+          },
+        }
       },
 
       config = function()
@@ -117,7 +123,8 @@ return {
             'jsonls',
             -- 'ruby_ls',
             -- 'solargraph',
-            'tailwindcss'
+            'tailwindcss',
+            'lemminx',
         },
           handlers = {
             lsp_zero.default_setup,
@@ -146,6 +153,7 @@ return {
           debug = true,
           on_attach = null_opts.on_attach,
           sources = {
+            require("none-ls.diagnostics.flake8"),
             slim_diagnostics,
             -- null_ls.builtins.diagnostics.rubocop,
             null_ls.builtins.diagnostics.haml_lint,
@@ -158,12 +166,10 @@ return {
             -- null_ls.builtins.diagnostics.curlylint,
             null_ls.builtins.diagnostics.djlint,
             -- null_ls.builtins.diagnostics.dotenv_linter,
-            -- null_ls.builtins.diagnostics.editorconfig_checker,
+            null_ls.builtins.diagnostics.editorconfig_checker,
             null_ls.builtins.diagnostics.erb_lint,
             null_ls.builtins.formatting.erb_lint,
-            null_ls.builtins.diagnostics.flake8,
             -- null_ls.builtins.diagnostics.hadolint,
-            null_ls.builtins.diagnostics.jsonlint,
             -- null_ls.builtins.diagnostics.luacheck,
             -- null_ls.builtins.diagnostics.markdownlint,
             -- null_ls.builtins.diagnostics.selene,
@@ -172,8 +178,7 @@ return {
             -- null_ls.builtins.diagnostics.tidy,
             null_ls.builtins.diagnostics.yamllint,
             null_ls.builtins.diagnostics.zsh,
-            null_ls.builtins.formatting.autopep8,
-            null_ls.builtins.formatting.beautysh,
+            null_ls.builtins.formatting.shfmt,
             null_ls.builtins.formatting.codespell,
             null_ls.builtins.formatting.djlint,
             null_ls.builtins.formatting.isort,
@@ -186,18 +191,11 @@ return {
             -- null_ls.builtins.formatting.phpcsfixer,
             -- null_ls.builtins.formatting.terrafmt,
             null_ls.builtins.formatting.terraform_fmt,
-            null_ls.builtins.formatting.trim_whitespace,
-            null_ls.builtins.formatting.trim_newlines,
-            null_ls.builtins.formatting.xmllint,
             null_ls.builtins.hover.printenv,
-            -- null_ls.builtins.formatting.eslint,
           }
         })
 
         local cmp = require('cmp')
-        -- local sources = lsp.defaults.cmp_sources()
-        -- table.insert(sources, { name = 'nvim_lsp_signature_help' })
-
         local cmp_config = lsp.defaults.cmp_config({
           preselect = 'none',
           completion = {
@@ -208,7 +206,10 @@ return {
             { name = 'luasnip' },
           },
           mapping = {
-            ['<CR>'] = cmp.mapping.confirm({select = false}),
+            ['<CR>'] = cmp.mapping.confirm({
+              behavior = cmp.ConfirmBehavior.Replace,
+              select = true
+            }),
             ['<tab>'] = cmp.mapping.select_next_item(),
             -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
           },
