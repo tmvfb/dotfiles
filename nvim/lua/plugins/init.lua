@@ -57,7 +57,6 @@ require('pckr').add {
       end
     };
 
-
     -- 'AndrewRadev/splitjoin.vim';
     'tpope/vim-fugitive';  -- working with git
 
