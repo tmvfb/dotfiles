@@ -19,6 +19,4 @@ return {
   'tpope/vim-rails';
   'dhruvasagar/vim-table-mode';
   'mfussenegger/nvim-jdtls';
-
 }
-

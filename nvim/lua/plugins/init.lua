@@ -26,7 +26,6 @@ require('pckr').add {
     -- https://github.com/sindrets/diffview.nvim
 
     'tpope/vim-sensible';  -- basic config for nvim
-
     'nvim-lua/plenary.nvim';  -- basic config for nvim
     'nvim-tree/nvim-web-devicons';
     'svban/YankAssassin.vim';  -- leaves cursor after yank

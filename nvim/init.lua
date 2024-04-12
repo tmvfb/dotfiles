@@ -2,7 +2,6 @@
 
 vim.loader.enable()
 
--- require('config')
 require('settings')
 require('autocmds')
 require('plugins.init')

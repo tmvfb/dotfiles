@@ -39,6 +39,7 @@ bind('n', '"P', '"+P', opts)
 -- Buffers
 bind("n", "gn", ":bn<CR>", opts)
 bind("n", "gp", ":bp<CR>", opts)
+bind('n', 'bd', ':bd<CR>', opts)
 
 -- Don't yank on delete char
 -- bind("n", "x", '"_x', opts)
@@ -87,17 +88,8 @@ bind('n', '<leader>;', '<cmd>TroubleToggle<CR>', opts)
 -- bind('n', '<leader>p', ':set paste<CR>', opts)
 -- bind('n', '<leader>pp', ':set nopaste<CR>', opts)
 
--- Django templates syntax (see functions.lua)
--- bind('n', '<leader>tt', "<cmd>lua require('functions').Surround_translation()<CR>", opts)
--- bind('n', '<leader>tu', "<cmd>lua require('functions').Surround_url()<CR>", opts)
--- bind('n', '<leader>t{', "<cmd>lua require('functions').Surround_brackets()<CR>", opts)
--- bind('n', '<leader>tf', "<cmd>lua require('functions').Surround_func()<CR>", opts)
-
 -- Select current word and run command to replace it
 bind("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
-
--- buffer pick
-bind("n", "<leader>pb", "<cmd>require('cokeline.mappings').pick('focus')<CR>", opts)
 
 -- dap bindings
 bind("n", '<leader>t', "<cmd>lua require('dap').toggle_breakpoint() <CR>", opts)
@@ -111,4 +103,3 @@ bind('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({ async = true })<cr>', opts
 -- bind('n', "gr", "<cmd>TroubleToggle quickfix<cr>", opts)
 bind('n', '<leader>rn', vim.lsp.buf.rename, opts)
 bind('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-bind('n', 'bd', ':bd<CR>', opts)

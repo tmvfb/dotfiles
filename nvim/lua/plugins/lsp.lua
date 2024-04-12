@@ -1,4 +1,3 @@
-
 return {
   {
     'VonHeikemen/lsp-zero.nvim',
@@ -11,46 +10,12 @@ return {
       'b0o/schemastore.nvim',
 
       -- DAP support
-      'mfussenegger/nvim-dap';
-      {
-        'mfussenegger/nvim-dap-python',
-        requires = {
-          'nvim-tree/nvim-tree.lua',
-          'mfussenegger/nvim-dap'
-        },
-        config = function()
-          require("dap-python").setup(
-          '~/.virtualenvs/debugpy/bin/python'
-          )
-        end
-      };
+      'mfussenegger/nvim-dap',
+      'nvim-neotest/nvim-nio',
       'jay-babu/mason-nvim-dap.nvim',
       'theHamsta/nvim-dap-virtual-text',
-      {
-        'rcarriga/nvim-dap-ui',
-        requires = {
-          'mfussenegger/nvim-dap',
-          'neovim/nvim-lspconfig',
-          'williamboman/mason-lspconfig.nvim',
-          'nvim-neotest/nvim-nio'
-        },
-        config = function()
-          require("dapui").setup()
-        end
-      };
-      {
-        'folke/neodev.nvim',
-        requires = {
-          'mfussenegger/nvim-dap',
-          'neovim/nvim-lspconfig',
-          'williamboman/mason-lspconfig.nvim'
-        },
-        config = function()
-          require("neodev").setup({
-            library = { plugins = { "nvim-dap-ui" }, types = true },
-          })
-        end
-      };
+      'rcarriga/nvim-dap-ui',
+      'folke/neodev.nvim',
 
       -- Snippets
       'SirVer/ultisnips',
@@ -85,67 +50,43 @@ return {
       lsp.preset('recommended')
 
       lsp.on_attach(function(client, bufnr)
-        lsp.default_keymaps({ buffer = bufnr })
-      end)
-
-      local lsp_zero = require('lsp-zero')
-
-      lsp_zero.on_attach(function(client, bufnr)
         -- see :help lsp-zero-keybindings
         -- to learn the available actions
-        lsp_zero.default_keymaps({ buffer = bufnr })
+        lsp.default_keymaps({ buffer = bufnr })
       end)
 
       require('mason').setup({})
       require('mason-lspconfig').setup({
+        automatic_installation = true,
         ensure_installed = {
           'marksman',
           'ltex',
           'tsserver',
-          -- 'phpactor',
           'ansiblels',
           'bashls',
           'dockerls',
           'elixirls',
-          -- 'gopls',
           'grammarly',
           'jdtls',
           'omnisharp',
-          -- 'psalm',
-          -- 'pyright',
-          -- 'sorbet',
+          'pyright',
           'sqlls',
           'lua_ls',
           'stylelint_lsp',
           'terraformls',
-          -- 'rubocop',
           'vimls',
           'yamlls',
           'html',
-          -- 'haml-lint',
           'cssls',
           'eslint',
           'jsonls',
-          -- 'ruby_ls',
-          -- 'solargraph',
           'tailwindcss',
           'lemminx',
         },
         handlers = {
-          lsp_zero.default_setup,
+          lsp.default_setup,
         },
       })
-
-      local solargraph_opts = {
-        cmd = { 'bin/solargraph' }
-      }
-
-      local sorbet_opts = {
-        cmd = { 'bin/sorbet' }
-      }
-
-      lsp.configure('sorbet', sorbet_opts)
-      lsp.configure('solargraph', solargraph_opts)
 
       lsp.setup()
 
