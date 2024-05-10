@@ -189,6 +189,7 @@ require('pckr').add {
         }
       end
     };
+    'mbbill/undotree';  -- advanced undo
 
     unpack(require('plugins.treesitter'));
     unpack(require('plugins.lsp'));

@@ -14,13 +14,15 @@ require('pckr').add {
       require("catppuccin").setup {
         color_overrides = {
           latte = {
-            base = "#E8E8E8",
-            mantle = "#BEBEBE",
+            -- base = "#E8E8E8",
+            -- mantle = "#BEBEBE",
             -- crust = "#474747",
           },
         }
       }
     end
   };
+  "savq/melange-nvim";
 }
-vim.cmd.colorscheme "catppuccin-mocha"
+vim.opt.background = "light"
+vim.cmd.colorscheme "melange"
