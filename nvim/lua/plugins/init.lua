@@ -23,7 +23,7 @@ bootstrap_pckr()
 require('pckr').add {
 
     -- https://github.com/gelguy/wilder.nvim
-    -- https://github.com/sindrets/diffview.nvim
+    'sindrets/diffview.nvim';  -- VScode-like diffview
 
     'tpope/vim-sensible';  -- basic config for nvim
     'nvim-lua/plenary.nvim';  -- basic config for nvim

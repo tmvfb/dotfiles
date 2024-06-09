@@ -24,5 +24,6 @@ require('pckr').add {
   };
   "savq/melange-nvim";
 }
-vim.opt.background = "light"
-vim.cmd.colorscheme "melange"
+-- vim.opt.background = "light"
+-- vim.cmd.colorscheme "melange"
+vim.cmd.colorscheme "catppuccin-mocha"
