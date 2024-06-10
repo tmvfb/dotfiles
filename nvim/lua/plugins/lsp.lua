@@ -10,36 +10,37 @@ require('pckr').add {
       'b0o/schemastore.nvim',
 
       -- DAP support
-      'mfussenegger/nvim-dap',
-      'nvim-neotest/nvim-nio',
-      'jay-babu/mason-nvim-dap.nvim',
-      'theHamsta/nvim-dap-virtual-text',
-      'rcarriga/nvim-dap-ui',
-      'folke/neodev.nvim',
+      { 'mfussenegger/nvim-dap', opt = true },
+      { 'nvim-neotest/nvim-nio', opt = true },
+      { 'jay-babu/mason-nvim-dap.nvim', opt = true },
+      { 'theHamsta/nvim-dap-virtual-text', opt = true },
+      { 'rcarriga/nvim-dap-ui', opt = true },
+      { 'folke/neodev.nvim', opt = true },
 
       -- Snippets
-      'SirVer/ultisnips',
-      'L3MON4D3/LuaSnip',
-      'rafamadriz/friendly-snippets',
+      { 'SirVer/ultisnips', opt = true },
+      { 'L3MON4D3/LuaSnip', opt = true },
+      { 'rafamadriz/friendly-snippets', opt = true },
 
       -- Completion
-      'hrsh7th/nvim-cmp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-nvim-lua',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
-      'saadparwaiz1/cmp_luasnip',
-      'onsails/lspkind.nvim',
-      'jayli/vim-easycomplete', -- required at least for yaml
+      { 'hrsh7th/nvim-cmp', event = "InsertEnter" },
+      { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
+      { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
+      { 'onsails/lspkind.nvim', after = 'nvim-cmp' },
+      { 'jayli/vim-easycomplete', opt = true },
 
       -- Null LS
-      'jay-babu/mason-null-ls.nvim',
+      { 'jay-babu/mason-null-ls.nvim', opt = true },
       {
         "nvimtools/none-ls.nvim",
         requires = {
           "nvimtools/none-ls-extras.nvim",
         },
+        opt = true,
       },
     },
 

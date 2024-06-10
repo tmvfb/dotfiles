@@ -24,6 +24,7 @@ require('pckr').add {
 
   {
     'windwp/nvim-autopairs',
+    event = "InsertEnter",
     requires = {
       'hrsh7th/nvim-cmp',
       'nvim-treesitter/nvim-treesitter',
@@ -43,35 +44,11 @@ require('pckr').add {
   },
 
   {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    'tree-sitter/tree-sitter-embedded-template',
-    'RRethy/nvim-treesitter-endwise',
-    'windwp/nvim-ts-autotag',
-    'andymass/vim-matchup',
-    'JoosepAlviste/nvim-ts-context-commentstring',
-    {
-      'nvim-treesitter/nvim-treesitter-context',
-      config = function()
-        require 'treesitter-context'.setup {
-          separator = '-'
-        }
-      end
-    },
-    requires = {
-      'nvim-treesitter/nvim-treesitter',
-    }
-  },
-
-  {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup {
         auto_install = true,
-        context_commentstring = {
-          enable = true,
-          enable_autocmd = false,
-        },
         autotag = {
           enable = true,
         },
@@ -148,6 +125,20 @@ require('pckr').add {
             },
           },
         },
+      }
+    end
+  },
+
+  'nvim-treesitter/nvim-treesitter-textobjects',
+  'RRethy/nvim-treesitter-endwise',
+  'windwp/nvim-ts-autotag',
+  'andymass/vim-matchup',
+  'JoosepAlviste/nvim-ts-context-commentstring',
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    config = function()
+      require 'treesitter-context'.setup {
+        separator = '-'
       }
     end
   },
