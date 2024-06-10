@@ -1,15 +1,15 @@
-return {
+require('pckr').add {
   -- https://github.com/RRethy/nvim-treesitter-textsubjects
   {
     "ThePrimeagen/refactoring.nvim",
     requires = {
-        {"nvim-lua/plenary.nvim"},
-        {"nvim-treesitter/nvim-treesitter"}
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-treesitter/nvim-treesitter" }
     },
     config = function()
       require("refactoring").setup()
     end,
-  };
+  },
 
   -- function/class annotation generator
   {
@@ -20,8 +20,7 @@ return {
     requires = {
       'nvim-treesitter/nvim-treesitter'
     },
-  };
-
+  },
 
   {
     'windwp/nvim-autopairs',
@@ -41,7 +40,7 @@ return {
         cmp_autopairs.on_confirm_done()
       )
     end
-  };
+  },
 
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
@@ -61,7 +60,7 @@ return {
     requires = {
       'nvim-treesitter/nvim-treesitter',
     }
-  };
+  },
 
   {
     'nvim-treesitter/nvim-treesitter',
@@ -151,5 +150,5 @@ return {
         },
       }
     end
-  };
+  },
 }

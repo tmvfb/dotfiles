@@ -1,4 +1,4 @@
-return {
+require('pckr').add {
   {
     'VonHeikemen/lsp-zero.nvim',
     requires = {
@@ -31,7 +31,7 @@ return {
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'saadparwaiz1/cmp_luasnip',
       'onsails/lspkind.nvim',
-      'jayli/vim-easycomplete',  -- required at least for yaml
+      'jayli/vim-easycomplete', -- required at least for yaml
 
       -- Null LS
       'jay-babu/mason-null-ls.nvim',
@@ -40,7 +40,7 @@ return {
         requires = {
           "nvimtools/none-ls-extras.nvim",
         },
-      };
+      },
     },
 
     config = function()
@@ -156,12 +156,12 @@ return {
 
       cmp.setup(cmp_config)
     end
-  };
+  },
 
   {
     'j-hui/fidget.nvim',
     kconfig = function()
       require "fidget".setup {}
     end,
-  };
+  },
 }

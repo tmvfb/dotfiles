@@ -2,11 +2,10 @@
 
 vim.loader.enable()
 
-require('settings')
-require('autocmds')
+require('config.settings')
 require('plugins.init')
-require('keymappings')
-require('functions')  -- move functions here after all modules are loaded
-require('colorscheme')
+require('config.autocmds')
+require('config.keymappings')
+require('config.functions')  -- move functions here after all modules are loaded
 
 require('nvim-tree').setup()

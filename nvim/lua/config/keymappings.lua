@@ -83,7 +83,7 @@ bind('n', '<leader><leader>', ':NvimTreeToggle<CR>')
 
 bind('n', '<C-n>', ':NvimTreeFindFile<CR>')
 
-bind('n', '<leader>;', '<cmd>TroubleToggle<CR>', opts)
+bind('n', '<leader>;', '<cmd>Trouble diagnostics<CR>', opts)
 
 -- bind('n', '<leader>p', ':set paste<CR>', opts)
 -- bind('n', '<leader>pp', ':set nopaste<CR>', opts)
