@@ -20,12 +20,12 @@ end
 
 bootstrap_pckr()
 
-require('plugins.core');
+require('plugins.core')
 
-require('plugins.colorscheme');
-require('plugins.git');
-require('plugins.lsp');
-require('plugins.navigation');
-require('plugins.specific');
-require('plugins.treesitter');
-require('plugins.ui');
+require('plugins.colorscheme')
+require('plugins.git')
+require('plugins.lsp')
+require('plugins.navigation')
+require('plugins.specific')
+require('plugins.treesitter')
+require('plugins.ui')
