@@ -164,4 +164,13 @@ require('pckr').add {
       require "fidget".setup {}
     end,
   },
+
+  {
+    "folke/trouble.nvim", -- diagnostics tool
+    requires = "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("trouble").setup({})
+    end
+  },
+
 }

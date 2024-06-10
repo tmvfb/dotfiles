@@ -1,11 +1,12 @@
 require('pckr').add {
+  'slim-template/vim-slim',
+  'dhruvasagar/vim-table-mode',
+  'mfussenegger/nvim-jdtls',
+
   {
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   },
-
-  'slim-template/vim-slim',
-
   {
     "cuducos/yaml.nvim",
     ft = { "yaml" }, -- optional
@@ -14,7 +15,4 @@ require('pckr').add {
       "nvim-telescope/telescope.nvim" -- optional
     },
   },
-
-  'dhruvasagar/vim-table-mode',
-  'mfussenegger/nvim-jdtls',
 }

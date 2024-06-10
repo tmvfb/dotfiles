@@ -1,6 +1,8 @@
 require('pckr').add {
+  "savq/melange-nvim",
+  'marko-cerovac/material.nvim',
   {
-    'catppuccin/nvim', -- colorscheme
+    'catppuccin/nvim',
     config = function()
       require("catppuccin").setup {
         color_overrides = {
@@ -13,14 +15,4 @@ require('pckr').add {
       }
     end
   },
-  "savq/melange-nvim",
-  'marko-cerovac/material.nvim',
 }
-
-vim.cmd.colorscheme "catppuccin-mocha"
-
--- vim.opt.background = "light"
--- vim.cmd.colorscheme "melange"
-
--- vim.g.material_style = "palenight"
--- vim.cmd 'colorscheme material'
