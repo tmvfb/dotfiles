@@ -4,7 +4,8 @@ vim.loader.enable()
 
 require('config.settings')
 require('plugins.init')
+
 require('config.colorscheme')
 require('config.autocmds')
 require('config.keymappings')
-require('config.functions')  -- move functions here after all modules are loaded
+require('config.functions')

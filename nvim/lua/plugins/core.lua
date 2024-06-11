@@ -11,6 +11,7 @@ require('pckr').add {
   'ntpeters/vim-better-whitespace', -- trailing
   'dyng/ctrlsf.vim',                -- editing files in place during search
   'mbbill/undotree',                -- advanced undo
+  'kevinhwang91/nvim-bqf',          -- quickfix
 
   {
     'okuuva/auto-save.nvim',       -- auto saving docs

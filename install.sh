@@ -18,7 +18,7 @@ case "$OSTYPE" in
     echo "alias fixssh='eval \$(tmux showenv -s SSH_AUTH_SOCK)'" > ~/.oh-my-zsh/custom/useful.zsh
 
     # https://github.com/rbenv/ruby-build/wiki#suggested-build-environment
-    apt install -yy autoconf bison patch build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev
+    apt install -yy patch libyaml-dev libreadline6-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev
 
     # https://github.com/asdf-community/asdf-php/blob/master/.github/workflows/workflow.yml
     apt install -yy autoconf bison build-essential curl gettext git libgd-dev libcurl4-openssl-dev libedit-dev libicu-dev libjpeg-dev libmysqlclient-dev libonig-dev libpng-dev libpq-dev libreadline-dev libsqlite3-dev libssl-dev libxml2-dev libzip-dev openssl pkg-config re2c zlib1g-dev
@@ -35,7 +35,7 @@ case "$OSTYPE" in
 
     yes | brew install asdf neovim git the_silver_searcher fzf bat htop fd ncdu tldr httpie git-delta ripgrep gnu-sed tmux
     yes | brew install pandoc actionlint shellcheck checkmake lazygit
-    yes | brew install lua nodejs golang php composer
+    yes | brew install lua nodejs golang
     yes | brew install --cask temurin
 
   # https://www.geekbits.io/how-to-install-nerd-fonts-on-mac/
@@ -51,19 +51,16 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 sed -i'.bak' 's/^plugins=.*$/plugins=(git asdf vi-mode fzf docker docker-compose you-should-use)/' ~/.zshrc
 echo "alias fixssh='eval \$(tmux showenv -s SSH_AUTH_SOCK)'" >~/.oh-my-zsh/custom/useful.zsh
 
-# git clone https://github.com/mokevnin/dotfiles ~/dotfiles || true
+# git clone https://github.com/tmvfb/dotfiles ~/dotfiles || true
 
 # git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2 || true
 # echo ". \$HOME/.asdf/asdf.sh" >~/.oh-my-zsh/custom/asdf.zsh
 # bash -c ". $HOME/.asdf/asdf.sh"
 
 asdf plugin add nodejs || true
-# asdf plugin add php || true
-# asdf plugin add ruby || true
 asdf plugin add golang || true
 asdf plugin add java || true
 asdf plugin add python || true
-
 asdf plugin-add lua https://github.com/Stratus3D/asdf-lua.git || true
 
 asdf install lua latest
@@ -71,12 +68,6 @@ asdf global lua latest
 
 asdf install nodejs latest
 asdf global nodejs latest
-
-# asdf install ruby latest
-# asdf global ruby latest
-#
-# asdf install php latest
-# asdf global php latest
 
 asdf install golang latest
 asdf global golang latest
