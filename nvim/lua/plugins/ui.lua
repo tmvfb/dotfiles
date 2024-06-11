@@ -36,7 +36,6 @@ require("pckr").add {
     end
   },
 
-
   {
     'stevearc/dressing.nvim', -- improve ui
     config = function()

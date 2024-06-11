@@ -13,7 +13,7 @@ require('pckr').add {
   'mbbill/undotree',                -- advanced undo
 
   {
-    'nvim-zh/auto-save.nvim',       -- some weird fork
+    'okuuva/auto-save.nvim',       -- auto saving docs
     config = function()
       local autosave = require("auto-save")
       autosave.setup()
