@@ -38,8 +38,6 @@ bind("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], o
 -- keymap("i", "<C-s>", "<ESC> :w<CR>", silent)
 
 -- Buffers
-bind("n", "gn", ":bn<CR>", opts)
-bind("n", "gp", ":bp<CR>", opts)
 bind("n", "bd", ":bd<CR>", opts)
 
 -- Don't yank on delete char
@@ -52,8 +50,6 @@ bind("n", "bd", ":bd<CR>", opts)
 bind("v", "p", '"_dP', opts)
 
 -- Quickfix
-bind("n", "<leader>,", ":cp<CR>", opts)
-bind("n", "<leader>.", ":cn<CR>", opts)
 bind("n", "<leader>q", ":BqfToggle<CR>")
 
 -- Refactor with spectre

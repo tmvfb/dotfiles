@@ -1,16 +1,12 @@
 require("pckr").add {
   {
     'nvim-pack/nvim-spectre', -- powerful plugin for search
-    requires = {
-      "nvim-lua/plenary.nvim",
-    }
+    requires = "nvim-lua/plenary.nvim",
   },
 
   {
     'nvim-tree/nvim-tree.lua',       -- tree on the left (g? for help)
-    requires = {
-      'nvim-tree/nvim-web-devicons', -- optional, for file icons
-    },
+    requires = 'nvim-tree/nvim-web-devicons', -- optional, for file icons
     tag = 'nightly',                 -- optional, updated every week. (see issue #1193)
     config = function() require('nvim-tree').setup() end
   };
@@ -47,7 +43,7 @@ require("pckr").add {
         },
       }
     end,
-    requires = { 'nvim-lua/plenary.nvim' }
+    requires = 'nvim-lua/plenary.nvim'
   },
 
 }

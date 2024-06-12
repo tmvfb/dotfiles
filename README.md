@@ -37,6 +37,7 @@ Run `:Pckr update` after each pulling (git pull)
 
 * Use `<ctrl> + [` instead of `<Esc>`
 * `<leader>` – Space
+* See `:help unimpaired` for some fancy keymaps
 
 ### Navigation
 

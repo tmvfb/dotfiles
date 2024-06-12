@@ -13,9 +13,7 @@ require("pckr").add {
       "nvim-tree/nvim-web-devicons",
       "stevearc/resession.nvim"
     },
-    config = function()
-      require('cokeline').setup()
-    end
+    config = function() require('cokeline').setup() end
   },
 
   {
@@ -31,16 +29,16 @@ require("pckr").add {
   {
     'kosayoda/nvim-lightbulb', -- show lightbulb if actions available (F4, covered by lsp-zero)
     config = function()
-      local lightbulb = require('nvim-lightbulb')
-      lightbulb.setup({ autocmd = { enabled = true } })
+      require('nvim-lightbulb').setup({
+        autocmd = { enabled = true }
+      })
     end
   },
 
   {
     'stevearc/dressing.nvim', -- improve ui
     config = function()
-      local dressing = require('dressing')
-      dressing.setup({
+      require('dressing').setup({
         input = {
           get_config = function()
             if vim.api.nvim_buf_get_option(0, "filetype") == "NvimTree" then
@@ -54,9 +52,6 @@ require("pckr").add {
 
   {
     'lukas-reineke/indent-blankline.nvim', -- indentation vertical lines
-    config = function()
-      require("ibl").setup()
-    end
+    config = function() require("ibl").setup() end
   },
 }
-

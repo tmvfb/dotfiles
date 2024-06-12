@@ -6,20 +6,14 @@ require('pckr').add {
       { "nvim-lua/plenary.nvim" },
       { "nvim-treesitter/nvim-treesitter" }
     },
-    config = function()
-      require("refactoring").setup()
-    end,
+    config = function() require("refactoring").setup() end,
   },
 
   -- function/class annotation generator
   {
     'danymat/neogen',
-    config = function()
-      require('neogen').setup()
-    end,
-    requires = {
-      'nvim-treesitter/nvim-treesitter'
-    },
+    config = function() require('neogen').setup() end,
+    requires = 'nvim-treesitter/nvim-treesitter',
   },
 
   {

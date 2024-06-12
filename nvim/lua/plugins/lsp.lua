@@ -134,18 +134,14 @@ require('pckr').add {
   },
 
   {
-    'j-hui/fidget.nvim',
-    kconfig = function()
-      require "fidget".setup()
-    end,
+    'j-hui/fidget.nvim', -- ui for lsp processes
+    config = function() require "fidget".setup() end
   },
 
   {
     "folke/trouble.nvim", -- diagnostics tool
     requires = "nvim-tree/nvim-web-devicons",
-    config = function()
-      require("trouble").setup()
-    end
+    config = function() require("trouble").setup() end
   },
 
 }
