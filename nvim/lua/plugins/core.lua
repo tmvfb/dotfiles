@@ -1,4 +1,4 @@
-require('pckr').add {
+return {
   'tpope/vim-sensible',             -- basic config for nvim
   'nvim-lua/plenary.nvim',          -- basic config for nvim plugins
   'nvim-tree/nvim-web-devicons',    -- icons for nvim

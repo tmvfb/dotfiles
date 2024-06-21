@@ -1,8 +1,8 @@
-require('pckr').add {
+return {
   -- https://github.com/RRethy/nvim-treesitter-textsubjects
   {
     "ThePrimeagen/refactoring.nvim",
-    requires = {
+    dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-treesitter/nvim-treesitter" }
     },
@@ -13,13 +13,13 @@ require('pckr').add {
   {
     'danymat/neogen',
     config = function() require('neogen').setup() end,
-    requires = 'nvim-treesitter/nvim-treesitter',
+    dependencies = 'nvim-treesitter/nvim-treesitter',
   },
 
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
-    requires = {
+    dependencies = {
       'hrsh7th/nvim-cmp',
       'nvim-treesitter/nvim-treesitter',
     },

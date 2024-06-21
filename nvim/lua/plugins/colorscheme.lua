@@ -1,4 +1,4 @@
-require('pckr').add {
+return {
   "savq/melange-nvim",
   'marko-cerovac/material.nvim',
   {

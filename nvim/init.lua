@@ -1,9 +1,7 @@
 -- https://github.com/nanotee/nvim-lua-guide
 
-vim.loader.enable()
-
 require('config.settings')
-require('plugins.init')
+require('config.lazy')
 
 require('config.colorscheme')
 require('config.autocmds')

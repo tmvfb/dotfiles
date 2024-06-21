@@ -1,7 +1,7 @@
-require('pckr').add {
+return {
   {
     'VonHeikemen/lsp-zero.nvim',
-    requires = {
+    dependencies = {
       -- LSP Support
       'neovim/nvim-lspconfig',
       'williamboman/mason.nvim',
@@ -35,7 +35,7 @@ require('pckr').add {
       { 'jay-babu/mason-null-ls.nvim', opt = true },
       {
         "nvimtools/none-ls.nvim",
-        requires = {
+        dependencies = {
           "nvimtools/none-ls-extras.nvim",
         },
         opt = true,
@@ -140,7 +140,7 @@ require('pckr').add {
 
   {
     "folke/trouble.nvim", -- diagnostics tool
-    requires = "nvim-tree/nvim-web-devicons",
+    dependencies = "nvim-tree/nvim-web-devicons",
     config = function() require("trouble").setup() end
   },
 

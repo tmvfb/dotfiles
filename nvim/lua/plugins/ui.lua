@@ -1,4 +1,4 @@
-require("pckr").add {
+return {
   {
     'goolord/alpha-nvim', -- greet screen
     config = function()
@@ -8,7 +8,7 @@ require("pckr").add {
 
   {
     "willothy/nvim-cokeline", -- bufferline
-    requires = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       "stevearc/resession.nvim"

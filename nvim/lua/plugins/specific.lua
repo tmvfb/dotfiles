@@ -1,4 +1,4 @@
-require('pckr').add {
+return {
   'dhruvasagar/vim-table-mode',
   {
     "iamcco/markdown-preview.nvim",
@@ -7,7 +7,7 @@ require('pckr').add {
   {
     "cuducos/yaml.nvim",
     ft = { "yaml" }, -- optional
-    requires = {
+    dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-telescope/telescope.nvim" -- optional
     },
