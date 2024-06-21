@@ -2,6 +2,7 @@ return {
   -- https://github.com/RRethy/nvim-treesitter-textsubjects
   {
     "ThePrimeagen/refactoring.nvim",
+    event = "VeryLazy",
     dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-treesitter/nvim-treesitter" }
@@ -12,6 +13,7 @@ return {
   -- function/class annotation generator
   {
     'danymat/neogen',
+    event = "VeryLazy",
     config = function() require('neogen').setup() end,
     dependencies = 'nvim-treesitter/nvim-treesitter',
   },
@@ -39,6 +41,7 @@ return {
 
   {
     'nvim-treesitter/nvim-treesitter',
+    event = "VeryLazy",
     run = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup {
@@ -123,13 +126,14 @@ return {
     end
   },
 
-  'nvim-treesitter/nvim-treesitter-textobjects',
-  'RRethy/nvim-treesitter-endwise',
-  'windwp/nvim-ts-autotag',
-  'andymass/vim-matchup',
-  'JoosepAlviste/nvim-ts-context-commentstring',
+  { 'nvim-treesitter/nvim-treesitter-textobjects', event = "VeryLazy" },
+  { 'RRethy/nvim-treesitter-endwise', event = "VeryLazy" },
+  { 'windwp/nvim-ts-autotag', event = "VeryLazy" },
+  { 'andymass/vim-matchup', event = "VeryLazy" },
+  { 'JoosepAlviste/nvim-ts-context-commentstring', event = "VeryLazy" },
   {
     'nvim-treesitter/nvim-treesitter-context',
+    event = "VeryLazy",
     config = function()
       require 'treesitter-context'.setup {
         separator = '-'

@@ -15,10 +15,12 @@ return {
 
   {
     'okuuva/auto-save.nvim',       -- auto saving docs
+    event = { "InsertLeave", "TextChanged" },
     config = function() require("auto-save").setup() end
   },
   {
     "folke/which-key.nvim",         -- popups with key suggestions
+    event = "VeryLazy",
     config = function() require("which-key").setup() end
   },
 }

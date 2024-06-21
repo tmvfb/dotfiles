@@ -1,6 +1,7 @@
 return {
   {
     'VonHeikemen/lsp-zero.nvim',
+    event = "VeryLazy",
     dependencies = {
       -- LSP Support
       'neovim/nvim-lspconfig',
@@ -9,36 +10,35 @@ return {
       'b0o/schemastore.nvim',
 
       -- DAP support
-      { 'mfussenegger/nvim-dap', opt = true },
-      { 'nvim-neotest/nvim-nio', opt = true },
-      { 'jay-babu/mason-nvim-dap.nvim', opt = true },
-      { 'theHamsta/nvim-dap-virtual-text', opt = true },
-      { 'rcarriga/nvim-dap-ui', opt = true },
+      -- 'mfussenegger/nvim-dap',
+      -- 'nvim-neotest/nvim-nio',
+      -- 'jay-babu/mason-nvim-dap.nvim',
+      -- 'theHamsta/nvim-dap-virtual-text',
+      -- 'rcarriga/nvim-dap-ui',
 
       -- Snippets
-      { 'SirVer/ultisnips', opt = true },
-      { 'L3MON4D3/LuaSnip', opt = true },
-      { 'rafamadriz/friendly-snippets', opt = true },
+      'SirVer/ultisnips',
+      'L3MON4D3/LuaSnip',
+      'rafamadriz/friendly-snippets',
 
       -- Completion
-      { 'hrsh7th/nvim-cmp', event = "InsertEnter" },
-      { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
-      { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-      { 'onsails/lspkind.nvim', after = 'nvim-cmp' },
-      { 'jayli/vim-easycomplete', opt = true },
+      'hrsh7th/nvim-cmp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind.nvim',
+      'jayli/vim-easycomplete',
 
       -- Null LS
-      { 'jay-babu/mason-null-ls.nvim', opt = true },
+      'jay-babu/mason-null-ls.nvim',
       {
         "nvimtools/none-ls.nvim",
         dependencies = {
           "nvimtools/none-ls-extras.nvim",
         },
-        opt = true,
       },
     },
 
@@ -96,7 +96,11 @@ return {
         sources = {
           null_ls.builtins.code_actions.gitsigns,
           null_ls.builtins.code_actions.refactoring,
+          null_ls.builtins.completion.luasnip,
+          null_ls.builtins.diagnostics.actionlint,
+          null_ls.builtins.diagnostics.checkmake,
           null_ls.builtins.diagnostics.djlint,
+          null_ls.builtins.diagnostics.mypy,
           null_ls.builtins.diagnostics.yamllint,
           null_ls.builtins.diagnostics.zsh,
           null_ls.builtins.formatting.black,
@@ -135,11 +139,13 @@ return {
 
   {
     'j-hui/fidget.nvim', -- ui for lsp processes
+    event = "VeryLazy",
     config = function() require "fidget".setup() end
   },
 
   {
     "folke/trouble.nvim", -- diagnostics tool
+    event = "VeryLazy",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function() require("trouble").setup() end
   },

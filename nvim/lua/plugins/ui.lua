@@ -8,6 +8,7 @@ return {
 
   {
     "willothy/nvim-cokeline", -- bufferline
+    event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
@@ -28,6 +29,7 @@ return {
 
   {
     'kosayoda/nvim-lightbulb', -- show lightbulb if actions available (F4, covered by lsp-zero)
+    event = "VeryLazy",
     config = function()
       require('nvim-lightbulb').setup({
         autocmd = { enabled = true }
@@ -37,6 +39,7 @@ return {
 
   {
     'stevearc/dressing.nvim', -- improve ui
+    event = "VeryLazy",
     config = function()
       require('dressing').setup({
         input = {
@@ -52,6 +55,7 @@ return {
 
   {
     'lukas-reineke/indent-blankline.nvim', -- indentation vertical lines
+    event = "VeryLazy",
     config = function() require("ibl").setup() end
   },
 }

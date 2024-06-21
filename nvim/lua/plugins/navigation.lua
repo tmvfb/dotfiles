@@ -1,17 +1,20 @@
 return {
   {
     'nvim-pack/nvim-spectre', -- powerful plugin for search
+    event = "VeryLazy",
     dependencies = "nvim-lua/plenary.nvim",
   },
 
   {
     'nvim-tree/nvim-tree.lua',       -- tree on the left (g? for help)
+    event = "VeryLazy",
     dependencies = 'nvim-tree/nvim-web-devicons', -- optional, for file icons
     config = function() require('nvim-tree').setup() end
   };
 
   {
     'nvim-telescope/telescope.nvim',
+    event = "VeryLazy",
     config = function()
       -- require('telescope').load_extension('fzf')
       -- require('refactoring').setup()

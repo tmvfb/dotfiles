@@ -1,6 +1,6 @@
 return {
-  "savq/melange-nvim",
-  'marko-cerovac/material.nvim',
+  { "savq/melange-nvim", lazy = true },
+  { 'marko-cerovac/material.nvim', lazy = true },
   {
     'catppuccin/nvim',
     config = function()
