@@ -90,3 +90,8 @@ bind('n', '<leader>ca', vim.lsp.buf.code_action, opts)
 bind('v', '<leader><leader>', vim.lsp.buf.code_action, opts)
 bind('n', '<leader>;', '<cmd>Trouble diagnostics<CR>', opts)
 -- bind('n', "gr", "<cmd>Trouble quickfix<cr>", opts)
+
+-- misc
+bind('n', 'gV', '`.v`]', opts)
+bind('n', "<leader>lg", "<cmd>LazyGit<cr>", opts)
+bind('n', "gp", 'iif __name__ == "__main__":<Esc>o', opts)
