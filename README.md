@@ -1,14 +1,10 @@
 ## Requirements
 
 * Linux or Mac
-* [asdf](https://asdf-vm.com/guide/getting-started.html)
 * git (for automatic installation)
 * make (for automatic installation)
-* [Nvim](https://github.com/neovim/neovim/wiki/Installing-Neovim) (version >= 0.9)
-
-## Recommendations
-
 * [Oh My Zsh!](https://github.com/ohmyzsh/ohmyzsh)
+
 
 ## Setup
 
@@ -24,14 +20,14 @@ make deps-install
 ```
 
 ## Neovim
-**Setup latest Linux neovim release:**
+Is installed with install.sh script. **Manually setup latest Linux neovim release:**
 ```sh
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
 sudo ln -s $HOME/nvim.appimage $HOME/.local/bin/nvim
 ```
 
-Run `:Pckr update` after each pulling (git pull)
+Run `:Lazy` and update, also `:MasonUpdate` to update the packages and LSP dependencies.
 
 ### Main
 
@@ -72,31 +68,23 @@ Run `:Pckr update` after each pulling (git pull)
 * `<leader> so` – symbols
 * `<leader> sr` – references
 * `<leader> b` – show buffer list
-* `<leader> pb` – pick buffer (enter first letter of the name after the command)
 * `<leader> s` – search & replace
 
 ### Code editing and code navigation
 
-* `<leader>;` - toggle Trouble (errors description)
-* `<leader>p` - :set paste
-* `<leader>pp` - :set nopaste
 * `gcc` – toggle commenting
 * `gf` – open a file corresponding to a word under the cursor
+* `gx` – open a link corresponding to a word under the cursor
 * `gd` – go to definition
 * `g;` – go to the last edited line in the current opened buffer
 * `gv` – reselect last visual selection
-* `]g` and `[g` – go through diagnostics
+* `]d` and `[d` – go through diagnostics
 * `]<leader>` and `[<leader>` – add empty line above and under cursor
 * `<leader>ca` – show code actions
 * `<leader>f` - format code
+* `<leader>rn` - LSP rename
+* `<leader>pr` - rename with spectre
 * `nvim-surround` is enabled, check key binds in their repo
-
-### dap commands (debugging)
-* `<leader>t` - toggle breakpoint
-* `<leader>dr` - run dap
-* `<leader>dl` - run till last breakpoint
-* `<leader>du` - toggle dap ui
-* `<leader>dd` - check the expression under cursor
 
 ## Misc
 Add to .zshrc/.bashrc:
