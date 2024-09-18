@@ -2,6 +2,7 @@
 
 require('config.settings')
 require('config.lazy')
+require('config.lspconfig')
 
 require('config.colorscheme')
 require('config.autocmds')
