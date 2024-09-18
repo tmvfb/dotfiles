@@ -30,7 +30,7 @@ return {
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'saadparwaiz1/cmp_luasnip',
       'onsails/lspkind.nvim',
-      'jayli/vim-easycomplete',
+      -- 'jayli/vim-easycomplete',
 
       -- Null LS
       'jay-babu/mason-null-ls.nvim',

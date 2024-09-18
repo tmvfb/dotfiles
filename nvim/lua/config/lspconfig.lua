@@ -1,3 +1,4 @@
+-- Lsp-Zero --------------------------------------------
 local lsp = require('lsp-zero')
 local lsp_attach = function(client, bufnr)
   lsp.default_keymaps({buffer = bufnr})
@@ -10,6 +11,7 @@ lsp.extend_lspconfig({
   lsp_attach = lsp_attach,
 })
 
+-- Mason + Mason-LSPconfig -----------------------------
 require('mason').setup()
 require('mason-lspconfig').setup({
   automatic_installation = true,
@@ -41,9 +43,9 @@ require('mason-lspconfig').setup({
   }
 })
 
+-- None-ls ---------------------------------------------
 local null_ls = require('null-ls')
 local null_opts = lsp.build_options('null-ls', {})
-
 null_ls.setup({
   debug = true,
   on_attach = null_opts.on_attach,
@@ -68,6 +70,7 @@ null_ls.setup({
   }
 })
 
+-- Completion ------------------------------------------
 local cmp = require('cmp')
 local cmp_config = lsp.defaults.cmp_config({
   preselect = 'none',
@@ -87,5 +90,28 @@ local cmp_config = lsp.defaults.cmp_config({
     -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
   },
 })
-
 cmp.setup(cmp_config)
+
+-- Specific LSPconfigs ---------------------------------
+-- https://www.reddit.com/r/neovim/comments/ze9gbe/kubernetes_auto_completion_support_in_neovim/
+require('lspconfig').yamlls.setup {
+  settings = {
+    yaml = {
+      schemas = {
+        kubernetes = "*.yaml",
+        ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+        ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+        ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
+        ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+        ["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
+        ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+        ["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
+        ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
+        ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
+      },
+      validate = true,  -- Enable validation
+      hover = true,     -- Enable hover support
+      completion = true -- Enable completion support
+    }
+  }
+}
