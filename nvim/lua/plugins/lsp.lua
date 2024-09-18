@@ -42,18 +42,4 @@ return {
       },
     },
   },
-
-  {
-    'j-hui/fidget.nvim', -- ui for lsp processes
-    event = "VeryLazy",
-    config = function() require "fidget".setup() end
-  },
-
-  {
-    "folke/trouble.nvim", -- diagnostics tool
-    event = "VeryLazy",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    config = function() require("trouble").setup() end
-  },
-
 }
