@@ -25,7 +25,7 @@ bind("v", "K", ":move '<-2<CR>gv-gv", opts)
 bind("v", "J", ":move '>+1<CR>gv-gv", opts)
 
 -- Select current word and run command to replace it
-bind("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
+-- bind("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
 
 -- bind('v', '"y', '"+y', opts)
 -- bind('n', '"y', '"+y', opts)
@@ -41,10 +41,10 @@ bind("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], o
 bind("n", "bd", ":bd<CR>", opts)
 
 -- Don't yank on delete char
--- bind("n", "x", '"_x', opts)
--- bind("n", "X", '"_X', opts)
--- bind("v", "x", '"_x', opts)
--- bind("v", "X", '"_X', opts)
+bind("n", "x", '"_x', opts)
+bind("n", "X", '"_X', opts)
+bind("v", "x", '"_x', opts)
+bind("v", "X", '"_X', opts)
 
 -- Don't yank on visual paste
 bind("v", "p", '"_dP', opts)
@@ -77,21 +77,18 @@ bind('n', '<C-n>', ':NvimTreeFindFile<CR>')
 -- bind('n', '<leader>pp', ':set nopaste<CR>', opts)
 
 -- dap bindings
-bind("n", '<leader>t', "<cmd>lua require('dap').toggle_breakpoint() <CR>", opts)
-bind("n", '<leader>dr', "<cmd>lua require('dap').continue()<CR>", opts)
-bind("n", '<leader>dl', "<cmd>lua require('dap').run_last()<CR>", opts)
-bind("n", '<leader>du', "<cmd>lua require('dapui').toggle() <CR>", opts)
-bind("n", '<leader>dd', "<cmd>lua require('dapui').eval() <CR>", opts)
+-- bind("n", '<leader>t', "<cmd>lua require('dap').toggle_breakpoint() <CR>", opts)
+-- bind("n", '<leader>dr', "<cmd>lua require('dap').continue()<CR>", opts)
+-- bind("n", '<leader>dl', "<cmd>lua require('dap').run_last()<CR>", opts)
+-- bind("n", '<leader>du', "<cmd>lua require('dapui').toggle() <CR>", opts)
+-- bind("n", '<leader>dd', "<cmd>lua require('dapui').eval() <CR>", opts)
 
 -- vim lsp bindings
 bind('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({ async = true })<cr>', opts)
 bind('n', '<leader>rn', vim.lsp.buf.rename, opts)
 bind('n', '<leader>ca', vim.lsp.buf.code_action, opts)
 bind('v', '<leader><leader>', vim.lsp.buf.code_action, opts)
-bind('n', '<leader>;', '<cmd>Trouble diagnostics<CR>', opts)
--- bind('n', "gr", "<cmd>Trouble quickfix<cr>", opts)
 
 -- misc
-bind('n', 'gV', '`.v`]', opts)
 bind('n', "<leader>lg", "<cmd>LazyGit<cr>", opts)
 bind('n', "gp", 'iif __name__ == "__main__":<Esc>o', opts)

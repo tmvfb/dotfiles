@@ -34,11 +34,14 @@ require('mason-lspconfig').setup({
     'jsonls',
     'tailwindcss',
     'lemminx',
-    'ruff',
+    'ruff_lsp',
+    'pylsp'
   },
   handlers = {
     function(server_name)
-      require('lspconfig')[server_name].setup({})
+      require('lspconfig')[server_name].setup({
+        on_attach = lsp_attach,
+      })
     end,
   }
 })
