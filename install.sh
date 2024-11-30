@@ -47,7 +47,6 @@ case "$OSTYPE" in
 esac
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true
-sed -i'.bak' 's/^plugins=.*$/plugins=(git asdf vi-mode fzf docker docker-compose you-should-use)/' ~/.zshrc
 echo "alias fixssh='eval \$(tmux showenv -s SSH_AUTH_SOCK)'" >~/.oh-my-zsh/custom/useful.zsh
 
 asdf plugin add nodejs || true
@@ -81,3 +80,8 @@ asdf plugin update --all
 REPO="$HOME/.oh-my-zsh/custom/plugins/you-should-use"
 git clone https://github.com/MichaelAquilina/zsh-you-should-use.git "$REPO" || true
 git -C "$REPO" pull
+
+# sed -i'.bak' 's/^plugins=.*$/plugins=(git asdf vi-mode fzf docker docker-compose you-should-use)/' ~/.zshrc
+sudo ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+rm ~/.zshrc
+sudo ln -s ~/dotfiles/.zshrc ~/.zshrc
