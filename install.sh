@@ -31,12 +31,11 @@ case "$OSTYPE" in
   darwin*)
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    brew install jesseduffield/lazygit/lazygit
 
     yes | brew install asdf neovim git the_silver_searcher fzf bat htop fd ncdu tldr httpie git-delta ripgrep gnu-sed tmux
-    yes | brew install pandoc actionlint shellcheck checkmake lazygit
+    yes | brew install pandoc actionlint shellcheck checkmake lazygit tig thefuck tree tokei yq jq wget
     yes | brew install lua nodejs golang
-    yes | brew install --cask temurin
+    yes | brew install --cask temurin rectangle unnaturalscrollwheels iterm2 ctags
 
   # https://www.geekbits.io/how-to-install-nerd-fonts-on-mac/
   brew tap homebrew/cask-fonts
@@ -50,12 +49,6 @@ esac
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true
 sed -i'.bak' 's/^plugins=.*$/plugins=(git asdf vi-mode fzf docker docker-compose you-should-use)/' ~/.zshrc
 echo "alias fixssh='eval \$(tmux showenv -s SSH_AUTH_SOCK)'" >~/.oh-my-zsh/custom/useful.zsh
-
-# git clone https://github.com/tmvfb/dotfiles ~/dotfiles || true
-
-# git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2 || true
-# echo ". \$HOME/.asdf/asdf.sh" >~/.oh-my-zsh/custom/asdf.zsh
-# bash -c ". $HOME/.asdf/asdf.sh"
 
 asdf plugin add nodejs || true
 asdf plugin add golang || true

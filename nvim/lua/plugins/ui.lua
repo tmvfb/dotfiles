@@ -58,4 +58,9 @@ return {
     event = "VeryLazy",
     config = function() require("ibl").setup() end
   },
+
+  {
+    'preservim/tagbar', -- file structure nav
+    event = "VeryLazy",
+  },
 }

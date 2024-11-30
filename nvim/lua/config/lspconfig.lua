@@ -34,7 +34,6 @@ require('mason-lspconfig').setup({
     'jsonls',
     'tailwindcss',
     'lemminx',
-    'ruff_lsp',
     'pylsp'
   },
   handlers = {
@@ -42,6 +41,13 @@ require('mason-lspconfig').setup({
       require('lspconfig')[server_name].setup({
         on_attach = lsp_attach,
       })
+    end,
+    ["pylsp"] = function ()  -- disable extra diagnostics
+        require("lspconfig").pylsp.setup({
+            handlers = {
+                ['textDocument/publishDiagnostics'] = function() end
+            }
+        })
     end,
   }
 })

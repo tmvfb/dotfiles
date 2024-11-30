@@ -38,13 +38,13 @@ bind("v", "J", ":move '>+1<CR>gv-gv", opts)
 -- keymap("i", "<C-s>", "<ESC> :w<CR>", silent)
 
 -- Buffers
-bind("n", "bd", ":bd<CR>", opts)
+-- bind("n", "bd", ":bd<CR>", opts)
 
 -- Don't yank on delete char
-bind("n", "x", '"_x', opts)
-bind("n", "X", '"_X', opts)
-bind("v", "x", '"_x', opts)
-bind("v", "X", '"_X', opts)
+-- bind("n", "d", '"_d', opts)
+-- bind("n", "D", '"_D', opts)
+-- bind("v", "d", '"_d', opts)
+-- bind("v", "D", '"_D', opts)
 
 -- Don't yank on visual paste
 bind("v", "p", '"_dP', opts)
@@ -92,3 +92,10 @@ bind('v', '<leader><leader>', vim.lsp.buf.code_action, opts)
 -- misc
 bind('n', "<leader>lg", "<cmd>LazyGit<cr>", opts)
 bind('n', "gp", 'iif __name__ == "__main__":<Esc>o', opts)
+bind('n', "<leader>hp", "V:Gitsigns preview_hunk_inline<CR>", opts)
+bind('n', "<leader>tb", ":TagbarToggle<CR>", opts)
+bind('n', "<C-a>", ":Alpha<CR>", opts)
+
+-- sessions
+bind('n', "<leader>ss", ":mksession! ~/.config/nvim/session/mysession.vim<CR>", opts)
+bind('n', "<leader>sl", ":source ~/.config/nvim/session/mysession.vim<CR>", opts)
