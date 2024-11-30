@@ -106,6 +106,7 @@ fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
 
 export FZF_BASE="/usr/bin/fzf"
+export PATH="$HOME/.local/bin:$PATH"
 
 export KUBECONFIG=~/.kube/config
 

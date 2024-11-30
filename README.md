@@ -68,7 +68,6 @@ Run `:Lazy` and update, also `:MasonUpdate` to update the packages and LSP depen
 * `<leader> so` – symbols
 * `<leader> sr` – references
 * `<leader> b` – show buffer list
-* `<leader> s` – search & replace
 
 ### Code editing and code navigation
 
@@ -81,10 +80,23 @@ Run `:Lazy` and update, also `:MasonUpdate` to update the packages and LSP depen
 * `]d` and `[d` – go through diagnostics
 * `]<leader>` and `[<leader>` – add empty line above and under cursor
 * `<leader>ca` – show code actions
+* `<leader><leader>` – show code actions in visual mode
 * `<leader>f` - format code
+* `<leader>rr` - refactor code in visual mode
 * `<leader>rn` - LSP rename
 * `<leader>pr` - rename with spectre
-* `nvim-surround` is enabled, check key binds in their repo
+* `vim-surround` is enabled, check key binds in their repo
+
+### Sessions
+* `<leader>ss` to save session
+* `<leader>ss` to load session
+
+### Tools and scripts
+* `<leader>lg` lazygit
+* `<leader>tb` tagbar
+* `<C-a>` alpha
+* `<leader>hp` toggle current chunk git diff
+* `gp` insert python script
 
 ## Misc
 Add to .zshrc/.bashrc:
