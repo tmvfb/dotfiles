@@ -56,7 +56,7 @@ asdf plugin add python || true
 asdf plugin-add lua https://github.com/Stratus3D/asdf-lua.git || true
 
 asdf install lua latest
-asdf global lua latest
+asps global lua latest
 
 asdf install nodejs latest
 asdf global nodejs latest

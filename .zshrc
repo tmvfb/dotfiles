@@ -106,9 +106,10 @@ fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
 
 export FZF_BASE="/usr/bin/fzf"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$HOME/Library/Python/3.12/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-
-export KUBECONFIG=~/.kube/config
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
@@ -116,4 +117,53 @@ export EDITOR="$VISUAL"
 c() {
   gcloud compute ssh ansible@"$1"
 }
+gcopy() {
+  gcloud compute ssh ansible@"$1" -- 'cat ~/.kube/config' | dos2unix | pbcopy
+}
 eval $(thefuck --alias)
+
+# KUBECONFIG magic ----------------------------------------------
+# Check if KUBECONFIG is set, and if not, offer selection via fzf
+function check_kubeconfig {
+    if [ -z "$KUBECONFIG" ]; then
+        # List all kubeconfig files in ~/.kube/config and select one via fzf
+        local selected_config=$(find ~/.kube -maxdepth 1 -type f | fzf --prompt="Select a kubeconfig: ")
+
+        if [ -n "$selected_config" ]; then
+            # Set the KUBECONFIG environment variable to the selected file
+            export KUBECONFIG="$selected_config"
+            echo "KUBECONFIG set to: $KUBECONFIG"
+        else
+            echo "No kubeconfig selected"
+        fi
+    else
+        echo "KUBECONFIG set to: $KUBECONFIG"
+    fi
+}
+
+# Hook into kubectl and k9s commands
+function kubectl {
+    # Check KUBECONFIG before running any kubectl command
+    check_kubeconfig
+    command kubectl "$@"
+}
+
+function k9s {
+    # Check KUBECONFIG before running any kubectl command
+    check_kubeconfig
+    command k9s
+}
+
+# New `kubeconfig` command to manually select a kubeconfig file
+function kubeconfig {
+    # List all kubeconfig files in ~/.kube/config and select one via fzf
+    local selected_config=$(find ~/.kube -maxdepth 1 -type f | fzf --prompt="Select a kubeconfig: ")
+
+    if [ -n "$selected_config" ]; then
+        # Set the KUBECONFIG environment variable to the selected file
+        export KUBECONFIG="$selected_config"
+        echo "KUBECONFIG set to: $KUBECONFIG"
+    else
+        echo "No kubeconfig selected"
+    fi
+}
