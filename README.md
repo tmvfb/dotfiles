@@ -94,7 +94,7 @@ Run `:Lazy` and update, also `:MasonUpdate` to update the packages and LSP depen
 ### Tools and scripts
 * `<leader>lg` lazygit
 * `<leader>tb` tagbar
-* `<C-a>` alpha
+* `<C-p>` alpha
 * `<leader>hp` toggle current chunk git diff
 * `gp` insert python script
 

@@ -94,8 +94,9 @@ bind('n', "<leader>lg", "<cmd>LazyGit<cr>", opts)
 bind('n', "gp", 'iif __name__ == "__main__":<Esc>o', opts)
 bind('n', "<leader>hp", "V:Gitsigns preview_hunk_inline<CR>", opts)
 bind('n', "<leader>tb", ":TagbarToggle<CR>", opts)
-bind('n', "<C-a>", ":Alpha<CR>", opts)
+bind('n', "<C-p>", ":Alpha<CR>", opts)
 
 -- sessions
 bind('n', "<leader>ss", ":mksession! ~/.config/nvim/session/mysession.vim<CR>", opts)
 bind('n', "<leader>sl", ":source ~/.config/nvim/session/mysession.vim<CR>", opts)
+

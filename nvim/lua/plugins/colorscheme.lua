@@ -15,4 +15,5 @@ return {
       }
     end
   },
+  { "shaunsingh/nord.nvim", lazy = true },
 }
