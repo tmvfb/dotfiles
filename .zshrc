@@ -162,7 +162,6 @@ function kubeconfig {
     if [ -n "$selected_config" ]; then
         # Set the KUBECONFIG environment variable to the selected file
         export KUBECONFIG="$selected_config"
-        echo "KUBECONFIG set to: $KUBECONFIG"
     else
         echo "No kubeconfig selected"
     fi

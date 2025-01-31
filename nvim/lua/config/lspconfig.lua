@@ -14,6 +14,7 @@ lsp.extend_lspconfig({
 -- Mason + Mason-LSPconfig -----------------------------
 require('mason').setup()
 require('mason-lspconfig').setup({
+  PATH = "prepend",
   automatic_installation = true,
   ensure_installed = {
     'marksman',

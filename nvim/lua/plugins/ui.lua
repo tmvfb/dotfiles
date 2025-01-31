@@ -63,4 +63,12 @@ return {
     'preservim/tagbar', -- file structure nav
     event = "VeryLazy",
   },
+
+  {
+    'szw/vim-maximizer', -- file structure nav
+    event = "VeryLazy",
+    init = function()
+      vim.g.maximizer_default_mapping_key = '<C-w>z'
+    end
+  },
 }
