@@ -55,10 +55,11 @@ require('mason-lspconfig').setup({
 
 -- None-ls ---------------------------------------------
 local null_ls = require('null-ls')
-local null_opts = lsp.build_options('null-ls', {})
 null_ls.setup({
   debug = true,
-  on_attach = null_opts.on_attach,
+  on_attach = function(client, bufnr)
+    lsp.default_setup(client, bufnr)
+  end,
   sources = {
     null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.code_actions.refactoring,
@@ -82,7 +83,7 @@ null_ls.setup({
 
 -- Completion ------------------------------------------
 local cmp = require('cmp')
-local cmp_config = lsp.defaults.cmp_config({
+local cmp_config = {
   preselect = 'none',
   completion = {
     completeopt = 'menu,menuone,noinsert,noselect'
@@ -99,7 +100,7 @@ local cmp_config = lsp.defaults.cmp_config({
     ['<tab>'] = cmp.mapping.select_next_item(),
     -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
   },
-})
+}
 cmp.setup(cmp_config)
 
 -- Specific LSPconfigs ---------------------------------
