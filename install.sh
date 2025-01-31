@@ -39,7 +39,7 @@ case "$OSTYPE" in
 
   # https://www.geekbits.io/how-to-install-nerd-fonts-on-mac/
   brew install alfred
-  yes | brew install --cask font-hack-nerd-font temurin rectangle unnaturalscrollwheels iterm2 universal-ctags
+  yes | brew install --cask font-meslo-lg-nerd-font temurin rectangle unnaturalscrollwheels iterm2 universal-ctags
   ;;
 *)
   echo 'Everything is ready. Go to the next step'

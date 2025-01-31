@@ -21,9 +21,9 @@ nvim-configure:
 deps-install: deps-npm deps-pip deps-go
 
 deps-pip:
-	pip3 install --upgrade pynvim
-	pip3 install --upgrade vim-vint spellcheck yamllint codespell
-	pip3 install --upgrade autopep8 flake8 bandit pytype black
+	pip3 install --upgrade --break-system-packages pynvim
+	pip3 install --upgrade --break-system-packages vim-vint spellcheck yamllint codespell
+	pip3 install --upgrade --break-system-packages autopep8 flake8 bandit pytype black
 
 deps-npm:
 	npm install -g neovim
