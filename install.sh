@@ -36,11 +36,10 @@ case "$OSTYPE" in
     yes | brew install asdf neovim git the_silver_searcher fzf bat htop fd ncdu tldr httpie git-delta ripgrep gnu-sed tmux
     yes | brew install pandoc actionlint shellcheck checkmake lazygit tig thefuck tree tokei yq jq wget
     yes | brew install lua nodejs golang
-    yes | brew install --cask temurin rectangle unnaturalscrollwheels iterm2 ctags
 
   # https://www.geekbits.io/how-to-install-nerd-fonts-on-mac/
-  brew tap homebrew/cask-fonts
-  brew install --cask font-hack-nerd-font
+  brew install alfred
+  yes | brew install --cask font-hack-nerd-font temurin rectangle unnaturalscrollwheels iterm2 universal-ctags
   ;;
 *)
   echo 'Everything is ready. Go to the next step'
@@ -57,7 +56,7 @@ asdf plugin add python || true
 asdf plugin-add lua https://github.com/Stratus3D/asdf-lua.git || true
 
 asdf install lua latest
-asps global lua latest
+asdf global lua latest
 
 asdf install nodejs latest
 asdf global nodejs latest
