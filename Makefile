@@ -2,8 +2,6 @@ all: install nvim-configure deps
 
 TAGS := all
 
-PACKER_PATH=~/.local/share/nvim/site/pack/pckr/start
-
 install:
 	./install.sh
 
@@ -11,12 +9,8 @@ nvim-configure:
 	rm -rf nvim/plugin || exit 0
 	rm -rf ~/.local/share/nvim || exit 0
 	rm -rf ~/.config/nvim || exit 0
-	rm -rf $(PACKER_PATH) || exit 0
 	mkdir -p ~/.config
-	mkdir -p $(PACKER_PATH)
-	git clone --depth 1 https://github.com/lewis6991/pckr.nvim $(PACKER_PATH)/pckr.nvim
 	ln -snf $(PWD)/nvim ~/.config/nvim
-	# nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 deps-install: deps-npm deps-pip deps-go
 
