@@ -3,6 +3,7 @@ return {
   { 'marko-cerovac/material.nvim', lazy = true },
   {
     'catppuccin/nvim',
+    lazy = true,
     config = function()
       require("catppuccin").setup {
         color_overrides = {

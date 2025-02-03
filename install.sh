@@ -35,11 +35,11 @@ case "$OSTYPE" in
 
     yes | brew install asdf neovim git the_silver_searcher fzf bat htop fd ncdu tldr httpie git-delta ripgrep gnu-sed tmux
     yes | brew install pandoc actionlint shellcheck checkmake lazygit tig thefuck tree tokei yq jq wget
-    yes | brew install lua nodejs golang
+    yes | brew install lua nodejs golang universal-ctags
 
   # https://www.geekbits.io/how-to-install-nerd-fonts-on-mac/
   brew install alfred
-  yes | brew install --cask font-meslo-lg-nerd-font temurin rectangle unnaturalscrollwheels iterm2 universal-ctags
+  yes | brew install --cask font-meslo-lg-nerd-font temurin rectangle unnaturalscrollwheels iterm2
   ;;
 *)
   echo 'Everything is ready. Go to the next step'
