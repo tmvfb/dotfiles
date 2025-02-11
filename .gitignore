@@ -11,3 +11,4 @@ fixtures/_build
 nvim/plugin/*
 nvim/session/*
 .null*
+.mypy_cache

@@ -1,18 +1,18 @@
--- Lsp-Zero --------------------------------------------
-local lsp = require('lsp-zero')
+-- Potential customization  --------------------------------------------
 local lsp_attach = function(client, bufnr)
-  lsp.default_keymaps({buffer = bufnr})
   -- this is where you enable features that only work
   -- if there is a language server active in the file
 end
 
-lsp.extend_lspconfig({
-  sign_text = true,
-  lsp_attach = lsp_attach,
+local yaml_cfg = require("yaml-companion").setup({
+  -- Add any options here, or leave empty to use the default settings
+  -- lspconfig = {
+  --   cmd = {"yaml-language-server"}
+  -- },
 })
 
 -- Mason + Mason-LSPconfig -----------------------------
-require('mason').setup()
+require('mason').setup()  -- installs servers and runs setup for them
 require('mason-lspconfig').setup({
   PATH = "prepend",
   automatic_installation = true,
@@ -43,12 +43,17 @@ require('mason-lspconfig').setup({
         on_attach = lsp_attach,
       })
     end,
+
+    -- custom behaviour
     ["pylsp"] = function ()  -- disable extra diagnostics
         require("lspconfig").pylsp.setup({
             handlers = {
                 ['textDocument/publishDiagnostics'] = function() end
             }
         })
+    end,
+    ["yamlls"] = function ()  -- add kubernetes schemas
+      require('lspconfig').yamlls.setup(yaml_cfg)
     end,
   }
 })
@@ -57,9 +62,7 @@ require('mason-lspconfig').setup({
 local null_ls = require('null-ls')
 null_ls.setup({
   debug = true,
-  on_attach = function(client, bufnr)
-    lsp.default_setup(client, bufnr)
-  end,
+  on_attach = lsp_attach,
   sources = {
     null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.code_actions.refactoring,
@@ -102,27 +105,3 @@ local cmp_config = {
   },
 }
 cmp.setup(cmp_config)
-
--- Specific LSPconfigs ---------------------------------
--- https://www.reddit.com/r/neovim/comments/ze9gbe/kubernetes_auto_completion_support_in_neovim/
-require('lspconfig').yamlls.setup {
-  settings = {
-    yaml = {
-      schemas = {
-        kubernetes = "*.yaml",
-        ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
-        ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-        ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
-        ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
-        ["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
-        ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
-        ["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
-        ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
-        ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
-      },
-      validate = true,  -- Enable validation
-      hover = true,     -- Enable hover support
-      completion = true -- Enable completion support
-    }
-  }
-}
