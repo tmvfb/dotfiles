@@ -12,6 +12,11 @@ nvim-configure:
 	mkdir -p ~/.config
 	ln -snf $(PWD)/nvim ~/.config/nvim
 
+	# sed -i'.bak' 's/^plugins=.*$/plugins=(git asdf vi-mode fzf docker docker-compose you-should-use)/' ~/.zshrc
+	ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+	rm ~/.zshrc
+	ln -s ~/dotfiles/.zshrc ~/.zshrc
+
 deps-install: deps-npm deps-pip deps-go
 
 deps-pip:
