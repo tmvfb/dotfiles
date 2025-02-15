@@ -18,7 +18,7 @@ return {
   },
 
   {
-      'nvim-lualine/lualine.nvim',
+      'nvim-lualine/lualine.nvim', -- statusline
       dependencies = { 'nvim-tree/nvim-web-devicons' },
       config = function()
         require('lualine').setup()
@@ -26,7 +26,7 @@ return {
   },
 
   {
-    'kosayoda/nvim-lightbulb', -- show lightbulb if actions available (F4, covered by lsp-zero)
+    'kosayoda/nvim-lightbulb', -- show lightbulb if actions available
     event = "VeryLazy",
     config = function()
       require('nvim-lightbulb').setup({

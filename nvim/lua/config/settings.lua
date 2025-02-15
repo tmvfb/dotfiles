@@ -1,53 +1,74 @@
 local options = {
+  -- Language & Input
   -- spelllang  = 'en_us,ru',
-  langmap    = 'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz',
-  clipboard      = "unnamed,unnamedplus",   --- Copy-paste between vim and everything else
-  -- cmdheight      = 1,                       --- Give more space for displaying messages
-  -- completeopt    = "menu,menuone,noselect", --- Better autocompletion
-  -- cursorline     = true,                    --- Highlight of current line
-  -- emoji          = false,                   --- Fix emoji display
-  -- expandtab      = true,                    --- Use spaces instead of tabs
-  -- foldcolumn     = "0",
-  -- foldnestmax    = 0,
-  -- foldlevel      = 99,                      --- Using ufo provider need a large value
-  -- foldlevelstart = 99,                      --- Expand all folds by default
-  -- ignorecase     = true,                    --- Needed for smartcase
-  -- laststatus     = 3,                       --- Have a global statusline at the bottom instead of one for each window
-  -- lazyredraw     = true,                    --- Makes macros faster & prevent errors in complicated mappings
-  number     = true, --- Shows current line number
-  -- pumheight      = 10,                      --- Max num of items in completion menu
-  relativenumber = true,                    --- Enables relative number
-  -- scrolloff      = 4,                       --- Always keep space when scrolling to bottom/top edge
-  -- shiftwidth     = 2,                       --- Change a number of space characeters inseted for indentation
-  -- showtabline    = 2,                       --- Always show tabs
-  signcolumn = "yes:1", --- Add extra sign column next to line number
-  ignorecase = true,
-  smartcase  = true, --- Uses case in search
-  -- smartindent    = true,                    --- Makes indenting smart
-  -- smarttab       = true,                    --- Makes tabbing smarter will realize you have 2 vs 4
-  -- softtabstop    = 2,                       --- Insert 2 spaces for a tab
-  -- splitright     = true,                    --- Vertical splits will automatically be to the right
-  -- swapfile       = false,                   --- Swap not needed
-  -- tabstop        = 2,                       --- Insert 2 spaces for a tab
-  termguicolors  = true,                    --- Correct terminal colors
-  -- timeoutlen     = 200,                     --- Faster completion (cannot be lower than 200 because then commenting doesn't work)
-  undofile   = true, --- Sets undo to file
-  -- updatetime     = 100,                     --- Faster completion
-  -- viminfo        = "'1000",                 --- Increase the size of file history
-  -- wildignore     = "*node_modules/**",      --- Don't search inside Node.js modules (works for gutentag)
-  -- wrap           = true,                   --- Display long lines as just one line
-  -- writebackup    = false,                   --- Not needed
+  langmap = 'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz',
+
+  -- UI & Navigation
+  number = true,                          -- Show line numbers
+  relativenumber = true,                  -- Relative line numbers
+  scrolloff = 1,                           -- Keep cursor 1 lines away from screen edge
+  sidescrolloff = 2,                       -- Keep 2 columns to the side when scrolling
+  sidescroll = 1,                          -- Smooth horizontal scrolling
+  signcolumn = "yes:1",                    -- Always show sign column
+  -- laststatus = 3,                          -- Global statusline instead of per-window
+  wildmenu = true,                         -- Enable command-line completion menu
+  wildoptions = "pum",                     -- Use popup menu for wildmenu
+  -- cmdheight      = 1,                    -- More space for displaying messages
+  -- showtabline    = 2,                    -- Always show tab bar
+
+  -- Search & Case Sensitivity
+  -- incsearch = true,                        -- Show search matches as you type
+  ignorecase = true,                        -- Ignore case in search
+  smartcase = true,                        -- Override ignorecase if search contains uppercase
+  -- timeoutlen     = 200,                   -- Faster completion (cannot be lower than 200)
+
+  -- Clipboard & Undo
+  clipboard = "unnamed,unnamedplus",       -- Copy-paste with system clipboard
+  undofile = true,                         -- Persistent undo
+  -- swapfile       = false,                 -- Disable swap file
+  -- backup         = false,                 -- Disable backup file
+  -- writebackup    = false,                 -- Disable writing backup
+
+  -- Indentation & Formatting
+  -- expandtab      = true,                  -- Use spaces instead of tabs
+  -- shiftwidth     = 2,                      -- Number of spaces per indentation
+  -- smartindent    = true,                   -- Smart indentation
+  -- smarttab       = true,                   -- Smart tabbing
+  -- softtabstop    = 2,                      -- Insert 2 spaces for a tab
+  -- tabstop        = 2,                      -- Tab width
+  -- conceallevel   = 0,                      -- Show `` in markdown files
+
+  -- Listchars & Display
+  listchars = {
+    tab = "> ", trail = "-", extends = ">", precedes = "<", nbsp = "+"
+  },
+  display = { "lastline" },                -- Show last line even when wrapped
+
+  -- Colors & Terminal
+  termguicolors = true,                    -- Better terminal colors
+  -- emoji          = false,                  -- Fix emoji display
+
+  -- File handling
+  autoread = true,                         -- Reload files if changed externally
+  fileformats = { "dos", "unix" },
+  fixeol = false,                          -- Don't add end-of-line automatically
+  eol = false,                             -- Don't enforce end-of-line
+  -- viminfo = "'1000",                       -- Increase the size of file history
+  -- wildignore     = "*node_modules/**",     -- Ignore Node.js modules in search
+  -- wrap           = true,                   -- Display long lines as one line
+
+  -- Performance
+  -- lazyredraw     = true,                   -- Makes macros faster & prevent errors in mappings
+  -- updatetime     = 100,                     -- Faster completion
+  -- pumheight      = 10,                      -- Max num of items in completion menu
 
   -- Neovim defaults
-  -- autoindent     = true,                    --- Good auto indent
-  -- backspace      = "indent,eol,start",      --- Making sure backspace works
-  -- backup         = false,                   --- Recommended by coc
-  -- conceallevel   = 0,                       --- Show `` in markdown files
-  -- encoding       = "utf-8",                 --- The encoding displayed
-  -- errorbells     = false,                   --- Disables sound effect for errors
-  -- fileencoding   = "utf-8",                 --- The encoding written to file
-  -- incsearch      = true,                    --- Start searching before pressing enter
-  -- showmode       = false,                   --- Don't show things like -- INSERT -- anymore
+  -- autoindent     = true,                   -- Good auto indent
+  backspace = { "indent", "eol", "start" }, -- Making sure backspace works
+  -- encoding       = "utf-8",                 -- Encoding displayed
+  -- fileencoding   = "utf-8",                 -- Encoding written to file
+  -- errorbells     = false,                   -- Disable error sound
+  -- showmode       = false,                   -- Don't show -- INSERT -- mode anymore
 }
 
 local globals = {
@@ -65,7 +86,3 @@ end
 for k, v in pairs(globals) do
   vim.g[k] = v
 end
-
-vim.opt.fileformats = { 'dos', 'unix' }
-vim.opt.fixeol = false
-vim.opt.eol = false

@@ -77,6 +77,7 @@ Run `:Lazy` and update, also `:MasonUpdate` to update the packages and LSP depen
 * `gd` – go to definition
 * `g;` – go to the last edited line in the current opened buffer
 * `gv` – reselect last visual selection
+* `gS` - split/join function arguments
 * `]d` and `[d` – go through diagnostics
 * `]<leader>` and `[<leader>` – add empty line above and under cursor
 * `<leader>ca` – show code actions
@@ -89,7 +90,7 @@ Run `:Lazy` and update, also `:MasonUpdate` to update the packages and LSP depen
 
 ### Sessions
 * `<leader>ss` to save session
-* `<leader>ss` to load session
+* `<leader>sl` to load session
 
 ### Tools and scripts
 * `<leader>lg` lazygit
@@ -97,11 +98,3 @@ Run `:Lazy` and update, also `:MasonUpdate` to update the packages and LSP depen
 * `<C-p>` alpha
 * `<leader>hp` toggle current chunk git diff
 * `gp` insert python script
-
-## Misc
-Add to .zshrc/.bashrc:
-  
-```sh
-export PATH="$HOME/.local/bin:$PATH"
-export FZF_BASE="/usr/bin/fzf"
-```

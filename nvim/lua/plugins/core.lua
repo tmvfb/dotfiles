@@ -1,9 +1,7 @@
 return {
-  'tpope/vim-sensible',             -- basic config for nvim
   'nvim-lua/plenary.nvim',          -- basic config for nvim plugins
   'nvim-tree/nvim-web-devicons',    -- icons for nvim
 
-  'svban/YankAssassin.vim',         -- leaves cursor after yank
   'tpope/vim-repeat',               -- repeat whole pattern instead of only last command
   'tpope/vim-unimpaired',           -- a few new mappings
   'tpope/vim-sleuth',               -- tab width
@@ -36,5 +34,11 @@ return {
       vim.g.slime_menu_config = false
       vim.g.slime_neovim_ignore_unlisted = false
     end,
+  },
+  {
+    'echasnovski/mini.splitjoin',
+    version = '*',
+    event = "VeryLazy",
+    config = function() require("mini.splitjoin").setup() end
   },
 }
