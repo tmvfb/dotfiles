@@ -7,9 +7,4 @@ return {
     dependencies = 'nvim-lua/plenary.nvim',
     config = function() require('gitsigns').setup() end
   },
-  {
-    "kdheepak/lazygit.nvim",                                                     -- lazygit integration
-    cmd = "LazyGit",
-    dependencies = "nvim-lua/plenary.nvim",
-  }
 }

@@ -13,20 +13,31 @@ return {
   -- 'rcarriga/nvim-dap-ui',
 
   -- Snippets
-  'SirVer/ultisnips',
-  'L3MON4D3/LuaSnip',
-  'rafamadriz/friendly-snippets',
+  -- 'SirVer/ultisnips',
+  {
+    "L3MON4D3/LuaSnip",
+    lazy = true,
+    dependencies = { "rafamadriz/friendly-snippets" },
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+    end
+  },
 
   -- Completion
-  'hrsh7th/nvim-cmp',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/cmp-nvim-lua',
-  'hrsh7th/cmp-nvim-lsp-signature-help',
-  'saadparwaiz1/cmp_luasnip',
-  'onsails/lspkind.nvim',
-  -- 'jayli/vim-easycomplete',
+  {
+    'hrsh7th/nvim-cmp',
+    lazy = true,
+    dependencies = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind.nvim',
+      -- 'jayli/vim-easycomplete',
+    },
+  },
 
   -- Null LS
   'jay-babu/mason-null-ls.nvim',
@@ -40,6 +51,7 @@ return {
   -- misc
   {
     'someone-stole-my-name/yaml-companion.nvim',
+    ft = "yaml",
     dependencies = {
       'neovim/nvim-lspconfig',
       'nvim-lua/plenary.nvim',
@@ -49,4 +61,20 @@ return {
       require('telescope').load_extension('yaml_schema')
     end,
   },
+
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    dependencies = {
+      'hrsh7th/nvim-cmp',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    config = function()
+      local npairs = require('nvim-autopairs')
+      npairs.setup({
+        check_ts = true
+      })
+    end
+  },
+
 }

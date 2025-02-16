@@ -6,21 +6,18 @@ return {
   },
 
   {
-    'nvim-tree/nvim-tree.lua',       -- tree on the left (g? for help)
-    event = "VeryLazy",
+    'nvim-tree/nvim-tree.lua',                    -- tree on the left (g? for help)
+    cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
     dependencies = 'nvim-tree/nvim-web-devicons', -- optional, for file icons
     config = function() require('nvim-tree').setup() end
-  };
+  },
 
   {
     'nvim-telescope/telescope.nvim',
     event = "VeryLazy",
     config = function()
       -- require('telescope').load_extension('fzf')
-      -- require('refactoring').setup()
-      -- require('telescope').load_extension('refactoring')
-
-      -- local trouble = require("trouble.providers.telescope")
+      -- trouble = require("trouble.providers.telescope")
 
       require('telescope').setup {
         defaults = {
@@ -47,5 +44,12 @@ return {
     end,
     dependencies = 'nvim-lua/plenary.nvim'
   },
-
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    event = "VeryLazy",
+    build = 'make',
+    config = function()
+      require('telescope').load_extension('fzf')
+    end
+  }
 }

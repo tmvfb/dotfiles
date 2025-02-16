@@ -1,47 +1,7 @@
 return {
-  -- https://github.com/RRethy/nvim-treesitter-textsubjects
-  {
-    "ThePrimeagen/refactoring.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-treesitter/nvim-treesitter" }
-    },
-    config = function() require("refactoring").setup() end,
-  },
-
-  -- function/class annotation generator
-  {
-    'danymat/neogen',
-    event = "VeryLazy",
-    config = function() require('neogen').setup() end,
-    dependencies = 'nvim-treesitter/nvim-treesitter',
-  },
-
-  {
-    'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    dependencies = {
-      'hrsh7th/nvim-cmp',
-      'nvim-treesitter/nvim-treesitter',
-    },
-    config = function()
-      local npairs = require('nvim-autopairs')
-      npairs.setup({
-        check_ts = true
-      })
-      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-      local cmp = require('cmp')
-      cmp.event:on(
-        'confirm_done',
-        cmp_autopairs.on_confirm_done()
-      )
-    end
-  },
-
   {
     'nvim-treesitter/nvim-treesitter',
-    event = "VeryLazy",
+    event = "BufReadPost",
     run = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup {
@@ -123,21 +83,28 @@ return {
           },
         },
       }
-    end
+    end,
+    dependencies = {
+      -- https://github.com/RRethy/nvim-treesitter-textsubjects
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      'RRethy/nvim-treesitter-endwise',
+      'windwp/nvim-ts-autotag',
+      'andymass/vim-matchup',
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      {
+        'nvim-treesitter/nvim-treesitter-context',
+        config = function()
+          require 'treesitter-context'.setup {
+            separator = '-'
+          }
+        end
+      },
+      {
+        -- function/class annotation generator
+        'danymat/neogen',
+        config = function() require('neogen').setup() end,
+      }
+    }
   },
 
-  { 'nvim-treesitter/nvim-treesitter-textobjects', event = "VeryLazy" },
-  { 'RRethy/nvim-treesitter-endwise', event = "VeryLazy" },
-  { 'windwp/nvim-ts-autotag', event = "VeryLazy" },
-  { 'andymass/vim-matchup', event = "VeryLazy" },
-  { 'JoosepAlviste/nvim-ts-context-commentstring', event = "VeryLazy" },
-  {
-    'nvim-treesitter/nvim-treesitter-context',
-    event = "VeryLazy",
-    config = function()
-      require 'treesitter-context'.setup {
-        separator = '-'
-      }
-    end
-  },
 }

@@ -8,11 +8,9 @@ return {
   'tpope/vim-surround',             -- powerful plugin to add brackets
   'ntpeters/vim-better-whitespace', -- trailing
   'mbbill/undotree',                -- advanced undo
-  'kevinhwang91/nvim-bqf',          -- quickfix
-  -- 'dyng/ctrlsf.vim',                -- editing files in place during search
 
   {
-    'okuuva/auto-save.nvim',       -- auto saving docs
+    'okuuva/auto-save.nvim',        -- auto saving docs
     event = { "InsertLeave", "TextChanged" },
     config = function() require("auto-save").setup() end
   },
@@ -36,7 +34,7 @@ return {
     end,
   },
   {
-    'echasnovski/mini.splitjoin',
+    'echasnovski/mini.splitjoin',   -- enable gS mapping
     version = '*',
     event = "VeryLazy",
     config = function() require("mini.splitjoin").setup() end

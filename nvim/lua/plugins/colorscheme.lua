@@ -1,5 +1,5 @@
 return {
-  { "savq/melange-nvim", lazy = true },
+  { "savq/melange-nvim",           lazy = true },
   { 'marko-cerovac/material.nvim', lazy = true },
   {
     'catppuccin/nvim',

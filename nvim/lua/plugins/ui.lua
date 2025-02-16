@@ -1,4 +1,6 @@
 return {
+  'kevinhwang91/nvim-bqf', -- quickfix
+
   {
     'goolord/alpha-nvim', -- greet screen
     config = function()
@@ -18,11 +20,11 @@ return {
   },
 
   {
-      'nvim-lualine/lualine.nvim', -- statusline
-      dependencies = { 'nvim-tree/nvim-web-devicons' },
-      config = function()
-        require('lualine').setup()
-      end
+    'nvim-lualine/lualine.nvim', -- statusline
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('lualine').setup()
+    end
   },
 
   {
@@ -31,22 +33,6 @@ return {
     config = function()
       require('nvim-lightbulb').setup({
         autocmd = { enabled = true }
-      })
-    end
-  },
-
-  {
-    'stevearc/dressing.nvim', -- improve ui
-    event = "VeryLazy",
-    config = function()
-      require('dressing').setup({
-        input = {
-          get_config = function()
-            if vim.api.nvim_buf_get_option(0, "filetype") == "NvimTree" then
-              return { enabled = false }
-            end
-          end,
-        },
       })
     end
   },
@@ -69,4 +55,18 @@ return {
       vim.g.maximizer_default_mapping_key = '<C-w>z'
     end
   },
+
+  {
+    "folke/snacks.nvim", -- mostly improved ui
+    priority = 1000,
+    lazy = false,
+    opts = {
+      gitbrowse = { enabled = true },
+      input = { enabled = true },
+      lazygit = { enabled = true },
+      notifier = { enabled = true },
+      rename = { enabled = true },
+      terminal = { enabled = true },
+    },
+  }
 }

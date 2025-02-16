@@ -57,7 +57,6 @@ bind("n", "<Leader>pr", "<cmd>lua require('spectre').open_visual({select_word=tr
 bind("v", "<Leader>pr", "<cmd>lua require('spectre').open_visual()<CR>")
 
 -- Telescope buffers
-bind("v",  "<leader>rr",  "<Esc><rmd>lua require('telescope').extensions.refactoring.refactors()<CR>", opts)
 bind("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
 bind("n", "<leader>sf", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
 bind("n", "<leader>sb", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", opts)
@@ -83,14 +82,7 @@ bind('n', '<C-n>', ':NvimTreeFindFile<CR>')
 -- bind("n", '<leader>du', "<cmd>lua require('dapui').toggle() <CR>", opts)
 -- bind("n", '<leader>dd', "<cmd>lua require('dapui').eval() <CR>", opts)
 
--- vim lsp bindings
-bind('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({ async = true })<cr>', opts)
-bind('n', '<leader>rn', vim.lsp.buf.rename, opts)
-bind('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-bind('v', '<leader><leader>', vim.lsp.buf.code_action, opts)
-
 -- misc
-bind('n', "<leader>lg", "<cmd>LazyGit<cr>", opts)
 bind('n', "gp", 'iif __name__ == "__main__":<Esc>o', opts)
 bind('n', "<leader>hp", "V:Gitsigns preview_hunk_inline<CR>", opts)
 bind('n', "<leader>tb", ":TagbarToggle<CR>", opts)
@@ -111,3 +103,13 @@ bind("n", "[d", vim.diagnostic.goto_prev, opts)
 bind("n", "]d", vim.diagnostic.goto_next, opts)
 bind("n", "<leader>e", vim.diagnostic.open_float, opts)
 bind("n", "<leader>q", vim.diagnostic.setloclist, opts)
+
+-- vim lsp bindings
+bind('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({ async = true })<cr>', opts)
+bind('v', '<leader><leader>', vim.lsp.buf.code_action, opts)
+
+-- snacks
+bind("n", "<leader>un", "<cmd>lua Snacks.notifier.hide()<CR>", opts)
+bind("n", "<c-/>", "<cmd>lua Snacks.terminal()<CR>", opts)
+bind('n', "<leader>lg", "<cmd>lua Snacks.lazygit()<cr>", opts)
+bind('n', "<leader>gB", "<cmd>lua Snacks.gitbrowse()<cr>", opts)
