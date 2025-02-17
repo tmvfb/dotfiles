@@ -16,9 +16,6 @@ return {
     'nvim-telescope/telescope.nvim',
     event = "VeryLazy",
     config = function()
-      -- require('telescope').load_extension('fzf')
-      -- trouble = require("trouble.providers.telescope")
-
       require('telescope').setup {
         defaults = {
           sorting_strategy = "ascending",
@@ -41,15 +38,23 @@ return {
           }
         },
       }
+      require("telescope").load_extension("noice")
+      require("telescope").load_extension("fzf")
+      require("telescope").load_extension("ui-select")
+      -- trouble = require("trouble.providers.telescope")
     end,
-    dependencies = 'nvim-lua/plenary.nvim'
+    dependencies = { 'nvim-lua/plenary.nvim' }
   },
+
   {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    event = "VeryLazy",
+    'nvim-telescope/telescope-fzf-native.nvim', -- speed up telescope
+    lazy = true,
     build = 'make',
-    config = function()
-      require('telescope').load_extension('fzf')
-    end
+  },
+
+  {
+    'nvim-telescope/telescope-ui-select.nvim', -- replacement for dressing.nvim
+    lazy = true,
   }
+
 }

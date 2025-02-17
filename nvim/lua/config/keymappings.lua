@@ -111,5 +111,6 @@ bind('v', '<leader><leader>', vim.lsp.buf.code_action, opts)
 -- snacks
 bind("n", "<leader>un", "<cmd>lua Snacks.notifier.hide()<CR>", opts)
 bind("n", "<c-/>", "<cmd>lua Snacks.terminal()<CR>", opts)
+bind("n", "<C-_>", "<cmd>lua Snacks.terminal()<CR>", opts)  -- for tmux
 bind('n', "<leader>lg", "<cmd>lua Snacks.lazygit()<cr>", opts)
 bind('n', "<leader>gB", "<cmd>lua Snacks.gitbrowse()<cr>", opts)

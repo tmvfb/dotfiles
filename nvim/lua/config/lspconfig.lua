@@ -54,7 +54,8 @@ local yaml_cfg = require("yaml-companion").setup({
   -- lspconfig = {
   --   cmd = {"yaml-language-server"}
   -- },
-  capabilities = capabilities
+  capabilities = capabilities,
+  on_attach = lsp_attach
 })
 
 require('mason').setup() -- installs servers and runs setup for them
@@ -96,6 +97,7 @@ require('mason-lspconfig').setup({
         handlers = {
           ['textDocument/publishDiagnostics'] = function() end
         },
+        on_attach = lsp_attach,
         capabilities = capabilities
       })
     end,
@@ -110,6 +112,7 @@ require('mason-lspconfig').setup({
             validate = { enable = true },
           },
         },
+        on_attach = lsp_attach,
         capabilities = capabilities
       }
     end,
@@ -123,7 +126,6 @@ null_ls.setup({
   on_attach = lsp_attach,
   sources = {
     null_ls.builtins.code_actions.gitsigns,
-    null_ls.builtins.code_actions.refactoring,
     null_ls.builtins.diagnostics.actionlint,
     null_ls.builtins.diagnostics.checkmake,
     null_ls.builtins.diagnostics.djlint,
