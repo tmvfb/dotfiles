@@ -6,6 +6,7 @@ return {
   { 'williamboman/mason.nvim', config = function() require("mason").setup() end },
   {
     'williamboman/mason-lspconfig.nvim',
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       local lsp_attach = function(client, bufnr)
@@ -23,7 +24,6 @@ return {
           'ansiblels',
           'bashls',
           'dockerls',
-          'grammarly',
           'sqlls',
           'lua_ls',
           'pyright',
@@ -105,6 +105,7 @@ return {
   -- Null LS
   {
     'nvimtools/none-ls.nvim',
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       'nvimtools/none-ls-extras.nvim',
     },
@@ -117,7 +118,7 @@ return {
       null_ls.setup({
         debug = true,
         on_attach = lsp_attach,
-        sources = {
+        sources = { -- these need to be available through path
           null_ls.builtins.code_actions.gitsigns,
           null_ls.builtins.diagnostics.actionlint,
           null_ls.builtins.diagnostics.checkmake,
@@ -126,6 +127,7 @@ return {
           null_ls.builtins.diagnostics.zsh,
           null_ls.builtins.formatting.black,
           null_ls.builtins.formatting.shfmt,
+          null_ls.builtins.formatting.yamlfix,
           null_ls.builtins.formatting.djlint,
           null_ls.builtins.formatting.isort,
           null_ls.builtins.formatting.prettier,

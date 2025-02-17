@@ -90,19 +90,19 @@ return {
           bottom_search = true,   -- use a classic bottom cmdline for search
           command_palette = true, -- position the cmdline and popupmenu together
         },
-        routes = {
-          {
-            filter = {
-              event = "lsp",
-              kind = "progress",
-              -- cond = function(message)
-              --   local client = vim.tbl_get(message.opts, "progress", "client")
-              --   return client == "null-ls"
-              -- end,
-            },
-            opts = { skip = true },
-          },
-        },
+        -- routes = {
+        --   {
+        --     filter = {
+        --       event = "lsp",
+        --       kind = "progress",
+        --       cond = function(message)
+        --         local client = vim.tbl_get(message.opts, "progress", "client")
+        --         return client == "null-ls"
+        --       end,
+        --     },
+        --     opts = { skip = true },
+        --   },
+        -- },
       })
     end
   },
