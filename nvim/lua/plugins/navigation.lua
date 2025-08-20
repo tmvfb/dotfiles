@@ -9,7 +9,15 @@ return {
     'nvim-tree/nvim-tree.lua',                    -- tree on the left (g? for help)
     cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
     dependencies = 'nvim-tree/nvim-web-devicons', -- optional, for file icons
-    config = function() require('nvim-tree').setup() end
+    config = function()
+      require('nvim-tree').setup {
+        actions = {
+          open_file = {
+            resize_window = false  -- don't resize nvim-tree on file open
+          }
+        },
+      }
+    end
   },
 
   {

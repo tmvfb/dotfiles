@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf vi-mode fzf docker docker-compose you-should-use)
+plugins=(git asdf vi-mode fzf docker docker-compose you-should-use z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,7 +118,9 @@ c() {
   gcloud compute ssh ansible@"$1"
 }
 gcopy() {
-  gcloud compute ssh ansible@"$1" -- 'cat ~/.kube/config' | dos2unix | pbcopy
+  local dest="$HOME/.kube/$1.config"
+  gcloud compute ssh ansible@"$1" -- 'cat ~/.kube/config' | dos2unix > "$dest"
+  echo "Config saved to $dest"
 }
 eval $(thefuck --alias)
 
@@ -132,12 +134,12 @@ function check_kubeconfig {
         if [ -n "$selected_config" ]; then
             # Set the KUBECONFIG environment variable to the selected file
             export KUBECONFIG="$selected_config"
-            echo "KUBECONFIG set to: $KUBECONFIG"
+            # echo "KUBECONFIG set to: $KUBECONFIG"
         else
             echo "No kubeconfig selected"
         fi
     else
-        echo "KUBECONFIG set to: $KUBECONFIG"
+        # echo "KUBECONFIG set to: $KUBECONFIG"
     fi
 }
 
@@ -155,7 +157,7 @@ function k9s {
 }
 
 # New `kubeconfig` command to manually select a kubeconfig file
-function kubeconfig {
+function kc {
     # List all kubeconfig files in ~/.kube/config and select one via fzf
     local selected_config=$(find ~/.kube -maxdepth 1 -type f | fzf --prompt="Select a kubeconfig: ")
 

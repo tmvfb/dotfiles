@@ -19,6 +19,7 @@ return {
         PATH = "prepend",
         automatic_installation = true,
         ensure_installed = {
+          'gopls',
           'marksman',
           'ltex',
           'ansiblels',
@@ -36,15 +37,17 @@ return {
           'jsonls',
           'tailwindcss',
           'lemminx',
-          'pylsp'
+          'pylsp',
         },
 
         handlers = {
           function(server_name)
-            require('lspconfig')[server_name].setup({
-              on_attach = lsp_attach,
-              capabilities = capabilities
-            })
+            if server_name ~= "pylsp" and server_name ~= "jsonls" then
+              require('lspconfig')[server_name].setup({
+                on_attach = lsp_attach,
+                capabilities = capabilities
+              })
+            end
           end,
 
           -- custom behaviour
@@ -54,7 +57,7 @@ return {
                 ['textDocument/publishDiagnostics'] = function() end
               },
               on_attach = lsp_attach,
-              capabilities = capabilities
+              capabilities = capabilities,
             })
           end,
           ["jsonls"] = function()
@@ -106,9 +109,6 @@ return {
   {
     'nvimtools/none-ls.nvim',
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      'nvimtools/none-ls-extras.nvim',
-    },
     config = function()
       local lsp_attach = function(client, bufnr)
         -- this is where you enable features that only work

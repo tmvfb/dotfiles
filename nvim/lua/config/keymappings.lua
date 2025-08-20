@@ -50,7 +50,7 @@ bind("v", "J", ":move '>+1<CR>gv-gv", opts)
 bind("v", "p", '"_dP', opts)
 
 -- Quickfix
-bind("n", "<leader>q", ":BqfToggle<CR>")
+-- bind("n", "<leader>q", ":BqfToggle<CR>")
 
 -- Refactor with spectre
 bind("n", "<Leader>pr", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", opts)
@@ -93,21 +93,25 @@ bind('n', "<leader>ss", ":mksession! ~/.config/nvim/session/mysession.vim<CR>", 
 bind('n', "<leader>sl", ":source ~/.config/nvim/session/mysession.vim<CR>", opts)
 
 -- former lsp-zero mappings
-bind("n", "gd", vim.lsp.buf.definition, opts)
-bind("n", "gr", vim.lsp.buf.references, opts)
+-- bind("n", "gd", vim.lsp.buf.definition, opts)
+-- bind("n", "gr", vim.lsp.buf.references, opts)
+bind("n", "gd", require("telescope.builtin").lsp_definitions, opts)
+bind("n", "gr", require("telescope.builtin").lsp_references, opts)
 bind("n", "gi", vim.lsp.buf.implementation, opts)
-bind("n", "K", vim.lsp.buf.hover, opts)
+bind("n", "gh", vim.lsp.buf.signature_help, opts)
 bind("n", "<leader>rn", vim.lsp.buf.rename, opts)
 bind("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-bind("n", "[d", vim.diagnostic.goto_prev, opts)
-bind("n", "]d", vim.diagnostic.goto_next, opts)
-bind("n", "<leader>e", vim.diagnostic.open_float, opts)
 bind("n", "<leader>q", vim.diagnostic.setloclist, opts)
+
+-- nvim 11 defaults
+-- bind("n", "[d", vim.diagnostic.goto_prev, opts)
+-- bind("n", "]d", vim.diagnostic.goto_next, opts)
+-- bind("n", "<leader>e", vim.diagnostic.open_float, opts)  -- <C-w><C-d>
+bind("n", "K", vim.lsp.buf.hover, opts)  -- bind provides more options
 
 -- vim lsp bindings
 bind('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({ async = true })<cr>', opts)
 bind('v', '<leader><leader>', vim.lsp.buf.code_action, opts)
-
 -- snacks
 bind("n", "<leader>un", "<cmd>lua Snacks.notifier.hide()<CR>", opts)
 bind("n", "<c-/>", "<cmd>lua Snacks.terminal()<CR>", opts)

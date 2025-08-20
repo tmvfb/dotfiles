@@ -102,7 +102,7 @@ return {
       {
         -- function/class annotation generator
         'danymat/neogen',
-        config = function() require('neogen').setup() end,
+        config = function() require('neogen').setup({ snippet_engine = "luasnip" }) end,
       }
     }
   },

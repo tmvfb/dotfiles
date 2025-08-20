@@ -30,7 +30,7 @@ case "$OSTYPE" in
     yes | brew install pandoc actionlint shellcheck checkmake lazygit tig thefuck tree tokei yq jq wget
     yes | brew install lua nodejs golang universal-ctags
 
-    brew install alfred
+    brew install alfred || true
     yes | brew install --cask font-meslo-lg-nerd-font || true
     yes | brew install --cask temurin rectangle unnaturalscrollwheels iterm2
   ;;

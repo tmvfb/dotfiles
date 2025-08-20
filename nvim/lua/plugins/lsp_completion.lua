@@ -53,7 +53,7 @@ return {
             -- select = true
           }),
           ['<tab>'] = cmp.mapping.select_next_item(),
-          -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+          ['<C-p>'] = cmp.mapping.select_prev_item(),
         },
         formatting = {
           format = require('lspkind').cmp_format() -- shows icons on completion
