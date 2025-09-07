@@ -3,21 +3,13 @@ return {
   -- LSP Support
   'neovim/nvim-lspconfig',
   'b0o/schemastore.nvim',
-  { 'williamboman/mason.nvim', config = function() require("mason").setup() end },
+  { 'mason-org/mason.nvim', config = function() require("mason").setup() end },
   {
-    'williamboman/mason-lspconfig.nvim',
+    'mason-org/mason-lspconfig.nvim',
     event = { "BufReadPre", "BufNewFile" },
     config = function()
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-      local lsp_attach = function(client, bufnr)
-        -- this is where you enable features that only work
-        -- if there is a language server active in the file
-      end
-
       -- Mason-LSPconfig -----------------------------
       require('mason-lspconfig').setup({
-        PATH = "prepend",
-        automatic_installation = true,
         ensure_installed = {
           'gopls',
           'marksman',
@@ -39,70 +31,8 @@ return {
           'lemminx',
           'pylsp',
         },
-
-        handlers = {
-          function(server_name)
-            if server_name ~= "pylsp" and server_name ~= "jsonls" then
-              require('lspconfig')[server_name].setup({
-                on_attach = lsp_attach,
-                capabilities = capabilities
-              })
-            end
-          end,
-
-          -- custom behaviour
-          ["pylsp"] = function() -- disable extra diagnostics
-            require("lspconfig").pylsp.setup({
-              handlers = {
-                ['textDocument/publishDiagnostics'] = function() end
-              },
-              on_attach = lsp_attach,
-              capabilities = capabilities,
-            })
-          end,
-          ["jsonls"] = function()
-            require('lspconfig').jsonls.setup {
-              settings = {
-                json = {
-                  schemas = require('schemastore').json.schemas(),
-                  validate = { enable = true },
-                },
-              },
-              on_attach = lsp_attach,
-              capabilities = capabilities
-            }
-          end,
-        }
       })
     end
-  },
-
-  -- misc
-  {
-    'someone-stole-my-name/yaml-companion.nvim',
-    ft = "yaml",
-    dependencies = {
-      'neovim/nvim-lspconfig',
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-    },
-    config = function()
-      require('telescope').load_extension('yaml_schema')
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-      local lsp_attach = function(client, bufnr)
-        -- this is where you enable features that only work
-        -- if there is a language server active in the file
-      end
-      local yaml_cfg = require("yaml-companion").setup({
-        -- Add any options here, or leave empty to use the default settings
-        -- lspconfig = {
-        --   cmd = {"yaml-language-server"}
-        -- },
-        capabilities = capabilities,
-        on_attach = lsp_attach
-      })
-      require('lspconfig').yamlls.setup(yaml_cfg)
-    end,
   },
 
   -- Null LS
